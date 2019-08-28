@@ -1,4 +1,4 @@
-package com.example.weather.app.activities;
+package com.example.weather.app.activities.main;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
