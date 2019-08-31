@@ -4,4 +4,5 @@
     <string name="connect_server">Connect server</string>
     <string name="celsius">℃</string>
     <string name="weather">weather</string>
+    <string name="show_forecast">5 day forecast</string>
 </resources>

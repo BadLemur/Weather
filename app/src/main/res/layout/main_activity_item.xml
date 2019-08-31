@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tv_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="kldgkl;jklg"
@@ -15,17 +15,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/image_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintEnd_toStartOf="@+id/textView3"
+        app:layout_constraintEnd_toStartOf="@+id/tv_temp"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toEndOf="@+id/tv_day"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_more_vert_black_24dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tv_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="klg"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="textView3,imageView,textView2" />
+        app:constraint_referenced_ids="tv_temp,image_weather,tv_day" />
 
     <View
         android:layout_width="match_parent"
