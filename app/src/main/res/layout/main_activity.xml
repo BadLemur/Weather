@@ -1,150 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/coordinatorLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/cardview_light_background">
+    android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/btn_option"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tv_city"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_more_vert_black_24dp" />
+        android:background="@android:color/transparent"
+        android:stateListAnimator="@null">
 
-    <TextView
-        android:id="@+id/tv_city"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/city"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btn_find_city"
-        app:layout_constraintEnd_toStartOf="@+id/btn_option"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/btn_find_city"
-        app:layout_constraintTop_toTopOf="@+id/btn_find_city" />
+        <com.google.android.material.appbar.CollapsingToolbarLayout
 
-    <ImageView
-        android:id="@+id/btn_find_city"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintEnd_toStartOf="@+id/tv_city"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_add_black_24dp" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="btn_find_city,btn_option,tv_city" />
-
-    <TextView
-        android:id="@+id/tv_name_city"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Воронеж"
-        android:textSize="35sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_city" />
-
-    <TextView
-        android:id="@+id/tv_connect_server"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="@string/connect_server"
-        android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_name_city" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="tv_connect_server,tv_name_city" />
-
-    <TextView
-        android:id="@+id/tv_temp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="17"
-        android:textSize="65sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.047"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_connect_server" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/celsius"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tv_temp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_connect_server"
-        app:layout_constraintVertical_bias="0.229" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ясно"
-        app:layout_constraintEnd_toEndOf="@+id/tv_temp"
-        app:layout_constraintStart_toStartOf="@+id/tv_temp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_temp" />
-
-    <androidx.constraintlayout.widget.Barrier
-        android:id="@+id/barrier4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:barrierDirection="bottom"
-        app:constraint_referenced_ids="textView" />
-
-    <LinearLayout
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:background="#7000"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/barrier4"
-        app:layout_constraintVertical_bias="1.0">
-
-        <LinearLayout
-            android:id="@+id/container_item"
-            android:layout_width="wrap_content"
-            android:layout_height="40dp"
-            android:orientation="vertical" />
-
-        <Button
-            android:id="@+id/btn_show_forecast"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="@string/show_forecast" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:layout_collapseMode="parallax"
+            app:layout_scrollFlags="scroll|snap|enterAlways">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar"
+                app:layout_collapseMode="pin" />
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lineSpacingExtra="8sp"
+            android:padding="16dp"
+            android:text="@string/text"
+            android:textSize="20sp" />
+    </androidx.core.widget.NestedScrollView>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,24 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.appcompat.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="?attr/actionBarSize"
     android:background="@android:color/transparent"
-    android:elevation="4dp"
-
     android:orientation="horizontal"
-    android:theme="@style/ToolBar"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    app:popupTheme="@style/PopupMenu"
+    app:theme="@style/ToolBar">
 
-    <ImageButton
-        android:background="@android:color/transparent"
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/show_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_add_black_24dp" />
+        android:background="@android:color/transparent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_add_black_24dp"
+        app:layout_collapseMode="parallax" />
 
-    <TextView
+
+    <androidx.appcompat.widget.AppCompatTextView
+
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="City" />
-</Toolbar>
+        android:text="@string/city" />
+
+
+</androidx.appcompat.widget.Toolbar>
