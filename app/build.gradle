@@ -78,4 +78,6 @@ dependencies {
 
     // rxbinding3
     implementation group: 'com.jakewharton.rxbinding3', name: 'rxbinding', version: '3.0.0'
+//    flexbox
+    implementation 'com.google.android:flexbox:1.1.0'
 }

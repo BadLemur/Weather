@@ -17,7 +17,7 @@ public class MainActivity extends MvpAppCompatActivity implements View_MainActiv
     @BindView(R.id.toolbar)
     Toolbar toolbar;
     @BindView(R.id.show_city)
-    ImageButton imageButton;
+    ImageButton ib_showCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,5 +31,10 @@ public class MainActivity extends MvpAppCompatActivity implements View_MainActiv
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar, menu);
         return true;
+    }
+
+    @Override
+    public void loader() {
+
     }
 }

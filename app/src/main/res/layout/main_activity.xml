@@ -39,7 +39,6 @@
             android:layout_height="wrap_content"
             android:lineSpacingExtra="8sp"
             android:padding="16dp"
-            android:text="@string/text"
             android:textSize="20sp" />
     </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
