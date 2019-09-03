@@ -5,17 +5,17 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.example.weather.R;
 import com.example.weather.data.network.Api;
-import com.example.weather.data.network.data.DataWeather;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends MvpAppCompatActivity implements View_MainActivity {
     private static final String TAG = "MainActivity";
@@ -32,11 +32,18 @@ public class MainActivity extends MvpAppCompatActivity implements View_MainActiv
         setSupportActionBar(toolbar);
 
         Api api = Api.Instance.getApi();
+        String appid = this.getResources().getString(R.string.appid);
+        String units = this.getResources().getString(R.string.units);
+        Log.d(TAG, "onCreate: " +appid);
+        Log.d(TAG, "onCreate: " +units);
+        api.getDataWeatherByCity("Moscow", appid, units)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(dataWeather -> {
+                    Toast.makeText(getApplicationContext(), dataWeather.getName() + " " +dataWeather.getMain().getTemp(), Toast.LENGTH_LONG).show();
+                });
 
-        api.getDataWeatherByCity("Moscow", R.string.appid, R.string.units);
 
 
-        Log.d(TAG, "onCreate: ");
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

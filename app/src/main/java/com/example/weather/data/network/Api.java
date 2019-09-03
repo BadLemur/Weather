@@ -14,7 +14,7 @@ import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface Api {
-    static String DOMAIN = "http://api.openweathermap.org";
+    static String DOMAIN = "https://api.openweathermap.org";
 
     @GET("/data/2.5/weather")
     Observable<DataWeather> getDataWeatherByCity(@Query("q") String city, @Query("appid") String appId, @Query("units") String units);

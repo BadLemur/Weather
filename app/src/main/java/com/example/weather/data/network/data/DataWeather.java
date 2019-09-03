@@ -8,9 +8,12 @@ import lombok.Setter;
 @Getter
 @Setter
 public class DataWeather {
+
     @SerializedName("coord")
     private PostCoord coord;
+
     @SerializedName("main")
     private PostMain main;
-    private String namr;
+
+    private String name;
 }
