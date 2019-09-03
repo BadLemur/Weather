@@ -34,14 +34,13 @@ public class MainActivity extends MvpAppCompatActivity implements View_MainActiv
         Api api = Api.Instance.getApi();
         String appid = this.getResources().getString(R.string.appid);
         String units = this.getResources().getString(R.string.units);
-        Log.d(TAG, "onCreate: " +appid);
-        Log.d(TAG, "onCreate: " +units);
+        Log.d(TAG, "onCreate: " + appid);
+        Log.d(TAG, "onCreate: " + units);
         api.getDataWeatherByCity("Moscow", appid, units)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dataWeather -> {
-                    Toast.makeText(getApplicationContext(), dataWeather.getName() + " " +dataWeather.getMain().getTemp(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), dataWeather.getName() + " " + dataWeather.getMain().getTemp(), Toast.LENGTH_LONG).show();
                 });
-
 
 
     }
