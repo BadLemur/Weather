@@ -10,11 +10,13 @@ import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.GET;
 import retrofit2.http.Query;
 
 public interface Api {
     static String DOMAIN = "http://api.openweathermap.org";
 
+    @GET("/data/2.5/weather")
     Observable<DataWeather> getDataWeatherByCity(@Query("q") String city, @Query("appid") String appId, @Query("units") String units);
 
     class Instance {
@@ -32,6 +34,10 @@ public interface Api {
             return new GsonBuilder()
                     .setLenient()
                     .create();
+        }
+
+        public static Api getApi() {
+            return getRetrofit().create(Api.class);
         }
     }
 }
