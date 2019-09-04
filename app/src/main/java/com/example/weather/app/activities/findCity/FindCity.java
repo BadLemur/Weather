@@ -1,6 +1,16 @@
 package com.example.weather.app.activities.findCity;
 
-import com.arellomobile.mvp.MvpAppCompatActivity;
+import android.os.Bundle;
 
-public class FindCity extends MvpAppCompatActivity implements View_FindCity{
+import com.arellomobile.mvp.MvpAppCompatActivity;
+import com.example.weather.R;
+
+public class FindCity extends MvpAppCompatActivity implements View_FindCity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.find_city);
+    }
+
 }

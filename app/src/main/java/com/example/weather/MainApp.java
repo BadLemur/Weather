@@ -33,7 +33,6 @@ public class MainApp extends Application {
                 .mainAppModule(new MainAppModule(getApplicationContext())).build();
     }
 
-
     public static MainApp app() {
         return app;
     }

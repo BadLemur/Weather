@@ -20,7 +20,7 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.weather_city, container, false);
-
         return root;
     }
+
 }
