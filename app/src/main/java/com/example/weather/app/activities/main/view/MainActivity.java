@@ -14,7 +14,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.weather.R;
-import com.example.weather.app.activities.findCity.FindCity;
+import com.example.weather.app.activities.findCity.view.FindCity;
 import com.example.weather.app.activities.main.presenter.PresenterMainActivity;
 import com.example.weather.data.network.Api;
 import com.google.android.material.tabs.TabLayout;
@@ -51,7 +51,8 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
         api.getDataWeatherByCity("Moscow", appid, units)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dataWeather -> {
-                    Toast.makeText(getApplicationContext(), dataWeather.getName() + " " + dataWeather.getMain().getTemp(), Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), dataWeather.get(0).getName() + " "
+                            + dataWeather.get(0).getMain().getTemp(), Toast.LENGTH_LONG).show();
                 });
 
 //        tabLayout.addTab(tabLayout.newTab().setText("Васька"));

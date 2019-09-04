@@ -19,6 +19,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.activities.findCity.FindCity" />
+        <activity android:name=".app.activities.findCity.view.FindCity" />
     </application>
 </manifest>

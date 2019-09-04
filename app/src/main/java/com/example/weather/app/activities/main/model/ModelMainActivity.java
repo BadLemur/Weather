@@ -31,7 +31,6 @@ public class ModelMainActivity implements iModelMainActivity {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe((cityUsersList, throwable) -> {
-
                     presenter.setCityUser(cityUsersList);
                 });
     }
