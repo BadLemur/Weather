@@ -14,7 +14,7 @@ public interface CityUserDAO {
     @Insert
     void add(CityUser cityUser);
 
-    @Query("Delete from city_user where id_server =:id_server ")
+    @Query("Delete from city_user where id_city =:id_server ")
     void delete(long id_server);
 
     @Query("Select * from city_user")

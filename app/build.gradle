@@ -59,9 +59,6 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.6.1'
     implementation group: 'com.squareup.retrofit2', name: 'converter-gson', version: '2.6.1'
     implementation group: 'com.squareup.retrofit2', name: 'adapter-rxjava2', version: '2.6.1'
-    // okhttp3
-    implementation group: 'com.squareup.okhttp3', name: 'okhttp', version: '4.1.0'
-    implementation group: 'com.squareup.okhttp3', name: 'logging-interceptor', version: '4.1.0'
 
     //для просмотра бд через браузер
     implementation 'com.facebook.stetho:stetho:1.5.1'
