@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey;
 
 import lombok.Builder;
 
-@Entity(tableName = "city.json")
+@Entity(tableName = "city")
 public class City {
 
     @PrimaryKey(autoGenerate = true)

@@ -1,6 +1,5 @@
-package com.example.weather.data.temp;
+package com.example.weather.data.DB.parser;
 
-import com.example.weather.data.temp.data.TempLangs;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
@@ -10,7 +9,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class TempWeather {
+public class ParserWeather {
     @SerializedName("id")
     private long id;
 
@@ -21,5 +20,5 @@ public class TempWeather {
     private String country;
 
     @SerializedName("langs")
-    private List<TempLangs> langs;
+    private List<ParserLangs> langs;
 }

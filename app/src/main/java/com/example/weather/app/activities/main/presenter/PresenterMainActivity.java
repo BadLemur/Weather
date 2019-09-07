@@ -20,8 +20,7 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-//        getViewState().loaderCity();
-        model.getCityUser();
+        model.onFirstStart();
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.example.weather.data.temp;
+package com.example.weather.data.DB.parser;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -6,34 +6,23 @@ import android.util.Log;
 
 import com.example.weather.MainApp;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-import com.google.gson.reflect.TypeToken;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-public class TempParserJson {
-    private static final String TAG = "TempParserJson";
+public class ParserCity {
+
     @Inject
     Context context;
 
-    ArrayList<String> strings = new ArrayList();
-
-    public TempParserJson() {
+    public ParserCity(CallbackParserData callback) {
         MainApp.app().appComponent().inject(this);
-
         String strJson;
         AssetManager assetManager = context.getAssets();
         try {
@@ -48,10 +37,11 @@ public class TempParserJson {
 
             Object obj = parser.parse(strJson);
             JsonArray jsonArray = (JsonArray) obj;
-            Log.d(TAG, "TempParserJson: " + jsonArray.get(0));
+            List<ParserWeather> weatherList = new ArrayList<>();
 
-            TempWeather tempWeather = new Gson().fromJson(jsonArray.get(0), TempWeather.class);
-            Log.d(TAG, "TempParserJson: " + tempWeather.getId());
+            for (int i = 0; jsonArray.size() > i; ++i)
+                weatherList.add(new Gson().fromJson(jsonArray.get(0), ParserWeather.class));
+            callback.returnListTempWeather(weatherList);
 
         } catch (IOException e) {
             e.printStackTrace();

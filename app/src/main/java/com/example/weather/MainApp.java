@@ -5,7 +5,6 @@ import android.content.Context;
 
 import androidx.multidex.MultiDex;
 
-import com.example.weather.data.temp.TempParserJson;
 import com.example.weather.data.dagger.component.DaggerMainAppComponent;
 import com.example.weather.data.dagger.component.MainAppComponent;
 import com.example.weather.data.dagger.module.MainAppModule;
@@ -32,7 +31,6 @@ public class MainApp extends Application {
         app = this;
         mainAppComponent = DaggerMainAppComponent.builder()
                 .mainAppModule(new MainAppModule(getApplicationContext())).build();
-        TempParserJson parserJson = new TempParserJson();
     }
 
     public static MainApp app() {

@@ -2,8 +2,9 @@ package com.example.weather.data.dagger.component;
 
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
 import com.example.weather.app.activities.main.model.ModelMainActivity;
+import com.example.weather.app.activities.main.model.OnCreateFirstDB;
+import com.example.weather.data.DB.parser.ParserCity;
 import com.example.weather.data.dagger.module.MainAppModule;
-import com.example.weather.data.temp.TempParserJson;
 
 import javax.inject.Singleton;
 
@@ -14,6 +15,10 @@ import dagger.Component;
 public interface MainAppComponent {
 
     void inject(ModelMainActivity app);
+
+    void inject(OnCreateFirstDB app);
+
     void inject(ModelFindCity app);
-    void inject(TempParserJson app);
+
+    void inject(ParserCity app);
 }
