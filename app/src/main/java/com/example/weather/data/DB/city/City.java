@@ -5,8 +5,12 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import lombok.Builder;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity(tableName = "city")
+@Setter
+@Getter
 public class City {
 
     @PrimaryKey(autoGenerate = true)

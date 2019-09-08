@@ -1,16 +1,15 @@
 package com.example.weather.app.activities.main.model;
 
-import android.util.Log;
-
 import com.example.weather.MainApp;
 import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
 import com.example.weather.data.DB.parser.CallbackParserData;
-import com.example.weather.data.DB.parser.ParserCity;
+import com.example.weather.data.DB.parser.ParserJson;
 import com.example.weather.data.DB.parser.ParserWeather;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -36,7 +35,7 @@ public class OnCreateFirstDB implements CallbackParserData {
         this.iOnCreateFirstDB = iOnCreateFirstDB;
 
         Completable.fromAction(() -> {
-            new ParserCity(onCreateFirstDB);
+            new ParserJson(onCreateFirstDB);
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -49,19 +48,30 @@ public class OnCreateFirstDB implements CallbackParserData {
             List<City> cityList = new ArrayList<>();
             {
                 for (ParserWeather weather : weatherList) {
-                    Log.d(TAG, "returnListTempWeather: " + weather.getLangs().get(0));
-                    cityList.add(City
-                            .builder()
-                            .idWeather(weather.getId())
-                            .country(weather.getCountry())
-                            .cityRU(weather.getLangs().get(0).getRu())
-                            .cityRUToLower(weather.getLangs().get(0).getRu().toLowerCase())
-                            .cityEN(weather.getLangs().get(0).getEn())
-                            .build());
+                    if (weather.getLangs() != null) {
+                        City city = City.builder()
+                                .idWeather(weather.getId())
+                                .country(weather.getCountry())
+                                .build();
+                        for (int i = 0; weather.getLangs().size() > i; ++i) {
+                            Map<String, String> map = weather.getLangs().get(i);
+                            if (map.get("ru") != null || map.get("en") != null) {
 
+                                if (map.containsKey("ru")) {
+                                    city.setCityRU(map.get("ru"));
+                                    city.setCityRUToLower(map.get("ru").toLowerCase());
+                                }
+                                if (map.containsKey("en"))
+                                    city.setCityEN(map.get("en"));
+                            }
+                        }
+                        if (city.getCityEN() != null || city.getCityRU() != null)
+                            cityList.add(city);
+                    }
                 }
             }
             cityDAO.addAll(cityList);
+            cityList.clear();
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

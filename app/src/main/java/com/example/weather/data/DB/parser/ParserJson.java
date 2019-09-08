@@ -16,12 +16,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-public class ParserCity {
+public class ParserJson {
 
     @Inject
     Context context;
 
-    public ParserCity(CallbackParserData callback) {
+    public ParserJson(CallbackParserData callback) {
         MainApp.app().appComponent().inject(this);
         String strJson;
         AssetManager assetManager = context.getAssets();
@@ -40,7 +40,7 @@ public class ParserCity {
             List<ParserWeather> weatherList = new ArrayList<>();
 
             for (int i = 0; jsonArray.size() > i; ++i)
-                weatherList.add(new Gson().fromJson(jsonArray.get(0), ParserWeather.class));
+                weatherList.add(new Gson().fromJson(jsonArray.get(i), ParserWeather.class));
             callback.returnListTempWeather(weatherList);
 
         } catch (IOException e) {
