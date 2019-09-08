@@ -1,4 +1,6 @@
-package com.example.weather.app.activities.main.model;
+package com.example.weather.app.activities.main.model.doCreateDB;
+
+import android.annotation.SuppressLint;
 
 import com.example.weather.MainApp;
 import com.example.weather.data.DB.city.City;
@@ -17,22 +19,23 @@ import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class OnCreateFirstDB implements CallbackParserData {
-    private static final String TAG = "OnCreateFirstDB";
+public class OnCreateFirstDB implements CallbackParserData, iOnCreateFirstDB {
+
     @Inject
     CityDAO cityDAO;
 
     private OnCreateFirstDB onCreateFirstDB;
 
-    private iOnCreateFirstDB iOnCreateFirstDB;
+    private CallbackOnCreateDB callbackOnCreateDB;
 
     public OnCreateFirstDB() {
         MainApp.app().appComponent().inject(this);
         onCreateFirstDB = this;
     }
 
-    public void doParser(iOnCreateFirstDB iOnCreateFirstDB) {
-        this.iOnCreateFirstDB = iOnCreateFirstDB;
+    @Override
+    public void doParser(CallbackOnCreateDB callbackOnCreateDB) {
+        this.callbackOnCreateDB = callbackOnCreateDB;
 
         Completable.fromAction(() -> {
             new ParserJson(onCreateFirstDB);
@@ -42,6 +45,7 @@ public class OnCreateFirstDB implements CallbackParserData {
                 .subscribe();
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void returnListTempWeather(List<ParserWeather> weatherList) {
         Completable.fromAction(() -> {
@@ -75,6 +79,6 @@ public class OnCreateFirstDB implements CallbackParserData {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(() -> callbackOnCreateDB.onCreatedDB());
     }
 }

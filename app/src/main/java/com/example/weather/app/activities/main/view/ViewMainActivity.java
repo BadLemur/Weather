@@ -8,9 +8,9 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 @StateStrategyType(AddToEndSingleStrategy.class)
 public interface ViewMainActivity extends MvpView {
 
-    @StateStrategyType(OneExecutionStateStrategy.class)
-    void loaderCity();
+    @StateStrategyType(AddToEndSingleStrategy.class)
+    void doLoader();
 
-    @StateStrategyType(OneExecutionStateStrategy.class)
+    @StateStrategyType(AddToEndSingleStrategy.class)
     void loaderFindCity();
 }

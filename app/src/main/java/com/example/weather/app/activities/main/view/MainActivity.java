@@ -3,11 +3,11 @@ package com.example.weather.app.activities.main.view;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.View;
 import android.widget.ImageButton;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -17,6 +17,7 @@ import com.example.weather.R;
 import com.example.weather.app.activities.findCity.view.FindCity;
 import com.example.weather.app.activities.main.presenter.PresenterMainActivity;
 import com.example.weather.data.network.Api;
+import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
 
 import butterknife.BindView;
@@ -34,6 +35,10 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     ImageButton ib_showCity;
     @BindView(R.id.main_tab_layout)
     TabLayout tabLayout;
+    @BindView(R.id.layout_progress_bar)
+    LinearLayout layoutProgressBar;
+    @BindView(R.id.appBarLayout)
+    AppBarLayout appBarLayout;
 
     @SuppressLint("CheckResult")
     @Override
@@ -65,13 +70,13 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     }
 
     @Override
-    public void loaderCity() {
-        Log.d(TAG, "loaderFindCity: loaderCity");
+    public void doLoader() {
+        layoutProgressBar.setVisibility(View.GONE);
+        appBarLayout.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void loaderFindCity() {
-        Log.d(TAG, "loaderFindCity: loaderFindCity");
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
         startActivity(intent);
     }

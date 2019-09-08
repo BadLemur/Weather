@@ -1,4 +1,4 @@
-package com.example.weather.app.activities.main.model;
+package com.example.weather.app.activities.main.model.doCreateDB;
 
 import android.annotation.SuppressLint;
 
@@ -12,17 +12,14 @@ import javax.inject.Inject;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class ModelMainActivity implements iModelMainActivity, iOnCreateFirstDB {
-    private static final String TAG = "ModelMainActivity";
-    @Inject
-    CityUserDAO cityUserDAO;
+public class ModelLoader implements iModelLoader, CallbackOnCreateDB {
 
     @Inject
     CityDAO cityDAO;
 
     private iPresenterMainActivity presenter;
 
-    public ModelMainActivity(iPresenterMainActivity presenter) {
+    public ModelLoader(iPresenterMainActivity presenter) {
         MainApp.app().appComponent().inject(this);
         this.presenter = presenter;
     }
@@ -36,16 +33,12 @@ public class ModelMainActivity implements iModelMainActivity, iOnCreateFirstDB {
                 .subscribe(integer -> {
                     if (integer == 0)
                         new OnCreateFirstDB().doParser(this);
+                    else onCreatedDB();
                 });
     }
 
     @Override
-    public void getCityUser() {
-        cityUserDAO.getCityUserDAO()
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(Schedulers.io())
-                .subscribe((cityUsersList, throwable) -> {
-                    presenter.setCityUser(cityUsersList);
-                });
+    public void onCreatedDB() {
+        presenter.onCreatedDB();
     }
 }

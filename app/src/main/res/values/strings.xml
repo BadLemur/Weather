@@ -1,6 +1,8 @@
 <resources>
     <string name="appid" translatable="false">ad9d88b86d5512845e34f6a3db29560b</string>
     <string name="units" translatable="false">metric</string>
+
     <string name="app_name">Weather</string>
     <string name="popular_cities">Popular cities</string>
+    <string name="please_wait">Please wait, loading data</string>
 </resources>

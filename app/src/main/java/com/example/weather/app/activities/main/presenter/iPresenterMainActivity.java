@@ -7,4 +7,6 @@ import java.util.List;
 public interface iPresenterMainActivity {
 
     void setCityUser(List<CityUser> list);
+
+    void onCreatedDB();
 }
