@@ -19,16 +19,16 @@ import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class OnCreateFirstDB implements CallbackParserData, iOnCreateFirstDB {
+public class CreateFirstDB implements CallbackParserData, iCreateFirstDB {
 
     @Inject
     CityDAO cityDAO;
 
-    private OnCreateFirstDB onCreateFirstDB;
+    private CreateFirstDB onCreateFirstDB;
 
     private CallbackOnCreateDB callbackOnCreateDB;
 
-    public OnCreateFirstDB() {
+    public CreateFirstDB() {
         MainApp.app().appComponent().inject(this);
         onCreateFirstDB = this;
     }

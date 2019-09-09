@@ -1,11 +1,11 @@
 package com.example.weather.app.activities.main.model.doCreateDB;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.main.presenter.iPresenterMainActivity;
 import com.example.weather.data.DB.city.CityDAO;
-import com.example.weather.data.DB.cityUser.CityUserDAO;
 
 import javax.inject.Inject;
 
@@ -13,7 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class ModelLoader implements iModelLoader, CallbackOnCreateDB {
-
+    private static final String TAG = "ModelLoader";
     @Inject
     CityDAO cityDAO;
 
@@ -32,7 +32,7 @@ public class ModelLoader implements iModelLoader, CallbackOnCreateDB {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(integer -> {
                     if (integer == 0)
-                        new OnCreateFirstDB().doParser(this);
+                        new CreateFirstDB().doParser(this);
                     else onCreatedDB();
                 });
     }
