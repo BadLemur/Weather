@@ -11,9 +11,9 @@ public class ItemAdapterFindCity {
 
     private long idWeather;
 
-    private String nameCity;
+    private String nameCityRU;
 
-    private String regionCity;
+    private String nameCityEN;
 
     private String country;
 }

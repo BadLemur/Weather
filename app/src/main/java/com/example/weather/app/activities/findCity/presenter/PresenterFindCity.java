@@ -7,6 +7,7 @@ import com.example.weather.MainApp;
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
 import com.example.weather.app.activities.findCity.model.iModelFindCity;
 import com.example.weather.app.activities.findCity.view.ViewFindCity;
+import com.example.weather.app.adapter.ItemAdapterFindCity;
 import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
 
@@ -34,7 +35,7 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
     }
 
     private Disposable disposable;
-    private List<City> list = new ArrayList<>();
+    private List<ItemAdapterFindCity> findCityList = new ArrayList<>();
 
     @SuppressLint("CheckResult")
     @Override
@@ -48,20 +49,20 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
                         s -> cityDAO.getFindToLike("%" + s + "%"))
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listCity -> {
-                    list.clear();
-                    for (City i : listCity) {
-                        City city = City
+                    findCityList.clear();
+                    for (City city : listCity) {
+                        ItemAdapterFindCity item = ItemAdapterFindCity
                                 .builder()
-                                .idWeather(i.idWeather)
-                                .country(i.country)
+                                .idWeather(city.idWeather)
+                                .country(city.country)
                                 .build();
-                        if (i.getCityRU() != null)
-                            city.setCityEN(i.getCityEN());
-                        if (i.getCityRU() != null)
-                            city.setCityRU(i.getCityRU());
-                        listCity.add(city);
+                        if (city.getCityEN() != null)
+                            item.setNameCityEN(city.getCityEN());
+                        if (city.getCityRU() != null)
+                            item.setNameCityRU(city.getCityRU());
+                        findCityList.add(item);
                     }
-                    getViewState().updateRecyclerView();
+                    getViewState().updateRecyclerView(findCityList);
                 }, throwable -> {
                 }, () -> {
                 }, disposable -> {

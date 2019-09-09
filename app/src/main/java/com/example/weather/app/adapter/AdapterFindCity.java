@@ -16,11 +16,12 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nameCity, region, country;
+        TextView nameRuCity, nameEnCity, region, country;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            nameCity = itemView.findViewById(R.id.tv_name_city_adapter);
+            nameRuCity = itemView.findViewById(R.id.tv_name_ru_city_adapter);
+            nameEnCity = itemView.findViewById(R.id.tv_name_en_city_adapter);
             region = itemView.findViewById(R.id.tv_region_adapter);
             country = itemView.findViewById(R.id.tv_country_adapter);
         }

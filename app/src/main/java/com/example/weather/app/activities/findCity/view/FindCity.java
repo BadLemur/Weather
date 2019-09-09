@@ -12,7 +12,11 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.weather.R;
 import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
 import com.example.weather.app.adapter.AdapterFindCity;
+import com.example.weather.app.adapter.ItemAdapterFindCity;
+import com.example.weather.data.DB.city.City;
 import com.google.android.flexbox.FlexboxLayout;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -61,13 +65,13 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     private AdapterFindCity adapterFindCity;
 
     @Override
-    public void updateRecyclerView() {
+    public void updateRecyclerView(List<ItemAdapterFindCity> findCityList) {
         if (recyclerViewCity.getVisibility() == View.GONE) {
             flexboxContainer.setVisibility(View.GONE);
             recyclerViewCity.setVisibility(View.VISIBLE);
-
-            adapterFindCity = new AdapterFindCity()
+            adapterFindCity = new AdapterFindCity(findCityList);
         }
+        adapterFindCity.notifyDataSetChanged();
     }
 
     @Override
