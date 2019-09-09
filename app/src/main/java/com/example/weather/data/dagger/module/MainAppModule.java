@@ -9,6 +9,7 @@ import com.example.weather.data.DB.CreateDB;
 import com.example.weather.data.DB.RoomDB;
 import com.example.weather.data.DB.city.CityDAO;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
+import com.example.weather.data.DB.oldChoiceCity.OldChoiceCity;
 
 import javax.inject.Singleton;
 
@@ -35,14 +36,6 @@ public class MainAppModule {
         return new CreateDB(context).getRoomDB();
     }
 
-//    @Singleton
-//    @Provides
-//    public RoomDB provideRoomDB(Context context) {
-//        RoomDatabase.Builder<RoomDB> roomDBBuilder = Room
-//                .databaseBuilder(context, RoomDB.class, RoomDB.NAME_DB);
-//        return roomDBBuilder.build();
-//    }
-
     @Singleton
     @Provides
     public CityUserDAO provideCustomMenuDAO(RoomDB roomDB) {
@@ -53,5 +46,11 @@ public class MainAppModule {
     @Provides
     public CityDAO provideCityDAO(RoomDB roomDB) {
         return roomDB.getCityDAO();
+    }
+
+    @Singleton
+    @Provides
+    public OldChoiceCity provideOldChoiceCityDAO(RoomDB roomDB) {
+        return roomDB.getOldChoiceCity();
     }
 }

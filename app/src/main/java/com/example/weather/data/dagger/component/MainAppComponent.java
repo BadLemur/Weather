@@ -1,6 +1,7 @@
 package com.example.weather.data.dagger.component;
 
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
+import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
 import com.example.weather.app.activities.main.model.doCreateDB.ModelLoader;
 import com.example.weather.app.activities.main.model.doCreateDB.OnCreateFirstDB;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
@@ -24,4 +25,6 @@ public interface MainAppComponent {
     void inject(ParserJson app);
 
     void inject(DoViewModel app);
+
+    void inject(PresenterFindCity app);
 }

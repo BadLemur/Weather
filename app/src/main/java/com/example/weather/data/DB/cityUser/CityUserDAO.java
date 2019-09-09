@@ -18,5 +18,5 @@ public interface CityUserDAO {
     void delete(long id_server);
 
     @Query("Select * from city_user")
-    Single<List<CityUser>> getCityUserDAO();
+    Single<List<CityUser>> getCityUser();
 }

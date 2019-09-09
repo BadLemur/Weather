@@ -7,6 +7,7 @@ import androidx.room.Query;
 import java.util.List;
 
 import io.reactivex.Maybe;
+import io.reactivex.Observable;
 
 @Dao
 public interface CityDAO {
@@ -22,4 +23,7 @@ public interface CityDAO {
 
     @Query("Select COUNT(*) FROM city")
     Maybe<Integer> getCount();
+
+    @Query("Select * from city where city_en like :str or city_ru_to_lower like :str")
+    Observable<List<City>> getFindToLike(String str);
 }

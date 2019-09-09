@@ -1,11 +1,11 @@
-package com.example.weather.data.DB.cityUser;
+package com.example.weather.data.DB.oldChoiceCity;
 
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
-@Entity(tableName = "city_user")
-public class CityUser {
+@Entity(tableName = "old_choice_city")
+public class OldChoiceCity {
 
     @PrimaryKey(autoGenerate = true)
     public long id;
@@ -13,8 +13,7 @@ public class CityUser {
     @ColumnInfo(name = "id_city")
     public long idWeather;
 
-
-    public CityUser(long idWeather) {
+    public OldChoiceCity(long idWeather) {
         this.idWeather = idWeather;
     }
 }

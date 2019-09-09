@@ -76,8 +76,14 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     }
 
     @Override
-    public void loaderFindCity() {
+    public void loadFindCity() {
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
         startActivity(intent);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.bind(this).unbind();
     }
 }
