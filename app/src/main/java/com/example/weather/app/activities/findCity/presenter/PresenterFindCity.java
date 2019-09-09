@@ -1,7 +1,9 @@
 package com.example.weather.app.activities.findCity.presenter;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
+import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
@@ -18,13 +20,14 @@ import java.util.concurrent.TimeUnit;
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
+@InjectViewState
 public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPresenterFindCity {
+    private static final String TAG = "PresenterFindCity";
     @Inject
     CityDAO cityDAO;
     private iModelFindCity model;
@@ -42,7 +45,7 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
     public void searchViewObservable(Observable<String> observable) {
         observable
                 .subscribeOn(Schedulers.io())
-                .map(s -> s.trim().toLowerCase())
+                .map(s -> s.trim().toLowerCase().trim())
                 .debounce(250, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
                 .flatMap((Function<String, Observable<List<City>>>)
@@ -64,6 +67,7 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
                     }
                     getViewState().updateRecyclerView(findCityList);
                 }, throwable -> {
+                    Log.e(TAG, "searchViewObservable: " + throwable);
                 }, () -> {
                 }, disposable -> {
                     this.disposable = disposable;

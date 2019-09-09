@@ -2,14 +2,11 @@ package com.example.weather.data.dagger.module;
 
 import android.content.Context;
 
-import androidx.room.Room;
-import androidx.room.RoomDatabase;
-
 import com.example.weather.data.DB.CreateDB;
 import com.example.weather.data.DB.RoomDB;
 import com.example.weather.data.DB.city.CityDAO;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
-import com.example.weather.data.DB.oldChoiceCity.OldChoiceCity;
+import com.example.weather.data.DB.oldChoiceCity.OldChoiceCityDAO;
 
 import javax.inject.Singleton;
 
@@ -50,7 +47,7 @@ public class MainAppModule {
 
     @Singleton
     @Provides
-    public OldChoiceCity provideOldChoiceCityDAO(RoomDB roomDB) {
-        return roomDB.getOldChoiceCity();
+    public OldChoiceCityDAO provideOldChoiceCityDAO(RoomDB roomDB) {
+        return roomDB.getOldChoiceCityDAO();
     }
 }

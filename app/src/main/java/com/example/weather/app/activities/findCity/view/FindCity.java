@@ -1,6 +1,7 @@
 package com.example.weather.app.activities.findCity.view;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.widget.SearchView;
@@ -23,7 +24,7 @@ import butterknife.ButterKnife;
 import io.reactivex.Observable;
 
 public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
-
+    private static final String TAG = "FindCity";
     @InjectPresenter
     PresenterFindCity presenter;
 
@@ -65,11 +66,11 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     private AdapterFindCity adapterFindCity;
 
     @Override
-    public void updateRecyclerView(List<ItemAdapterFindCity> findCityList) {
+    public void updateRecyclerView(List<ItemAdapterFindCity> cityList) {
         if (recyclerViewCity.getVisibility() == View.GONE) {
             flexboxContainer.setVisibility(View.GONE);
             recyclerViewCity.setVisibility(View.VISIBLE);
-            adapterFindCity = new AdapterFindCity(findCityList);
+            adapterFindCity = new AdapterFindCity(cityList);
         }
         adapterFindCity.notifyDataSetChanged();
     }

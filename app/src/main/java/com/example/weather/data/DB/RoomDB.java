@@ -8,6 +8,7 @@ import com.example.weather.data.DB.city.CityDAO;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCity;
+import com.example.weather.data.DB.oldChoiceCity.OldChoiceCityDAO;
 
 @Database(entities = {CityUser.class, City.class, OldChoiceCity.class}, version = 1, exportSchema = false)
 public abstract class RoomDB extends RoomDatabase {
@@ -18,5 +19,5 @@ public abstract class RoomDB extends RoomDatabase {
 
     public abstract CityDAO getCityDAO();
 
-    public abstract OldChoiceCity getOldChoiceCity();
+    public abstract OldChoiceCityDAO getOldChoiceCityDAO();
 }
