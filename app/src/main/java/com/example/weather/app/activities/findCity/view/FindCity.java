@@ -72,6 +72,7 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
             recyclerViewCity.setVisibility(View.VISIBLE);
             adapterFindCity = new AdapterFindCity(cityList);
             recyclerViewCity.setAdapter(adapterFindCity);
+            recyclerViewCity.setItemViewCacheSize(20);
         }
         adapterFindCity.notifyDataSetChanged();
     }
@@ -80,5 +81,6 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.bind(this).unbind();
+        presenter.disposable();
     }
 }

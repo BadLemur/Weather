@@ -13,7 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class ModelLoader implements iModelLoader, CallbackOnCreateDB {
-    private static final String TAG = "ModelLoader";
+
     @Inject
     CityDAO cityDAO;
 

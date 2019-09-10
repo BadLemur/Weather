@@ -74,9 +74,7 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
                 });
     }
 
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void disposable() {
         disposable.dispose();
     }
 }

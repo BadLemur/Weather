@@ -43,11 +43,11 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemAdapterFindCity item = list.get(position);
-        holder.country.setText(item.getCountry());
+        holder.country.setText(item.getCountry().trim());
         if (item.getNameCityRU() != null)
-            holder.nameRuCity.setText(item.getNameCityRU());
+            holder.nameRuCity.setText(item.getNameCityRU().trim());
         if (item.getNameCityEN() != null)
-            holder.nameEnCity.setText(item.getNameCityEN());
+            holder.nameEnCity.setText(item.getNameCityEN().trim());
     }
 
     @Override

@@ -56,17 +56,13 @@ public class CreateFirstDB implements CallbackParserData, iCreateFirstDB {
                         City city = City.builder()
                                 .idWeather(weather.getId())
                                 .country(weather.getCountry())
+                                .cityEN(weather.getNameCity())
                                 .build();
                         for (int i = 0; weather.getLangs().size() > i; ++i) {
                             Map<String, String> map = weather.getLangs().get(i);
-                            if (map.get("ru") != null || map.get("en") != null) {
-
-                                if (map.containsKey("ru")) {
-                                    city.setCityRU(map.get("ru"));
-                                    city.setCityRUToLower(map.get("ru").toLowerCase());
-                                }
-                                if (map.containsKey("en"))
-                                    city.setCityEN(map.get("en"));
+                            if (map.containsKey("ru")) {
+                                city.setCityRU(map.get("ru"));
+                                city.setCityRUToLower(map.get("ru").toLowerCase());
                             }
                         }
                         if (city.getCityEN() != null || city.getCityRU() != null)
