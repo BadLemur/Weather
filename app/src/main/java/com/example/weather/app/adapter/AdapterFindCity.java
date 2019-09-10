@@ -1,14 +1,19 @@
 package com.example.weather.app.adapter;
 
+import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weather.R;
+import com.example.weather.eventBus.ClickItemRecyclerView;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -17,12 +22,15 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private TextView nameRuCity, nameEnCity, country;
+        private LinearLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            layout = itemView.findViewById(R.id.find_city_layout);
             nameRuCity = itemView.findViewById(R.id.tv_name_ru_city_adapter);
             nameEnCity = itemView.findViewById(R.id.tv_name_en_city_adapter);
             country = itemView.findViewById(R.id.tv_country_adapter);
+
         }
     }
 
@@ -48,6 +56,10 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
             holder.nameRuCity.setText(item.getNameCityRU().trim());
         if (item.getNameCityEN() != null)
             holder.nameEnCity.setText(item.getNameCityEN().trim());
+        holder.layout.setOnClickListener(view -> {
+            EventBus.getDefault().post(new ClickItemRecyclerView(list.get(position).getIdWeather()));
+            ((Activity) holder.itemView.getContext()).finish();
+        });
     }
 
     @Override

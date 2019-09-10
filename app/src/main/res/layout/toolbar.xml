@@ -9,7 +9,7 @@
     app:theme="@style/ToolBar">
 
     <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/show_city"
+        android:id="@+id/ib_show_city"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"

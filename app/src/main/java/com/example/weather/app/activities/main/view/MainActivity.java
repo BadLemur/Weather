@@ -22,17 +22,18 @@ import com.google.android.material.tabs.TabLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 
 public class MainActivity extends MvpAppCompatActivity implements ViewMainActivity {
-    private static final String TAG = "MainActivity";
+
     @InjectPresenter
     PresenterMainActivity presenter;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @BindView(R.id.show_city)
-    ImageButton ib_showCity;
+    @BindView(R.id.ib_show_city)
+    ImageButton ibShowCity;
     @BindView(R.id.main_tab_layout)
     TabLayout tabLayout;
     @BindView(R.id.layout_progress_bar)
@@ -67,6 +68,12 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_toolbar, menu);
         return true;
+    }
+
+    @OnClick(R.id.ib_show_city)
+    public void showFindCityAct() {
+        Intent intent = new Intent(getApplicationContext(), FindCity.class);
+        startActivity(intent);
     }
 
     @Override

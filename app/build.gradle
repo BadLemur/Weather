@@ -76,9 +76,13 @@ dependencies {
     implementation group: 'com.google.dagger', name: 'dagger-android', version: '2.24'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.24'
 
-    // rxbinding3
+    //rxbinding3
     implementation group: 'com.jakewharton.rxbinding3', name: 'rxbinding', version: '3.0.0'
+
     //flexbox
     implementation 'com.google.android:flexbox:1.1.0'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+
+    //EventBus
+    implementation group: 'org.greenrobot', name: 'eventbus', version: '3.1.1'
 }
