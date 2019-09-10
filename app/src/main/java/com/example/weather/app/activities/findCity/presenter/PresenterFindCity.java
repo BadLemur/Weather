@@ -44,14 +44,13 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
     @Override
     public void searchViewObservable(Observable<String> observable) {
         observable
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.computation())
                 .map(s -> s.trim().toLowerCase().trim())
                 .debounce(250, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
                 .flatMap((Function<String, Observable<List<City>>>)
-                        s -> cityDAO.getFindToLike("%" + s + "%"))
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(listCity -> {
+                        s -> cityDAO.getFindToLike(s + "%"))
+                .map(listCity -> {
                     findCityList.clear();
                     for (City city : listCity) {
                         ItemAdapterFindCity item = ItemAdapterFindCity
@@ -65,6 +64,24 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
                             item.setNameCityRU(city.getCityRU());
                         findCityList.add(item);
                     }
+                    return findCityList;
+                })
+                .subscribeOn(Schedulers.computation())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(listCity -> {
+//                    findCityList.clear();
+//                    for (City city : listCity) {
+//                        ItemAdapterFindCity item = ItemAdapterFindCity
+//                                .builder()
+//                                .idWeather(city.idWeather)
+//                                .country(city.country)
+//                                .build();
+//                        if (city.getCityEN() != null)
+//                            item.setNameCityEN(city.getCityEN());
+//                        if (city.getCityRU() != null)
+//                            item.setNameCityRU(city.getCityRU());
+//                        findCityList.add(item);
+//                    }
                     getViewState().updateRecyclerView(findCityList);
                 }, throwable -> {
                     Log.e(TAG, "searchViewObservable: " + throwable);

@@ -72,7 +72,6 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
             recyclerViewCity.setVisibility(View.VISIBLE);
             adapterFindCity = new AdapterFindCity(cityList);
             recyclerViewCity.setAdapter(adapterFindCity);
-            recyclerViewCity.setItemViewCacheSize(20);
         }
         adapterFindCity.notifyDataSetChanged();
     }
