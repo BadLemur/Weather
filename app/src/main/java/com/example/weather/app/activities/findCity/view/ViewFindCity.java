@@ -3,7 +3,7 @@ package com.example.weather.app.activities.findCity.view;
 import com.arellomobile.mvp.MvpView;
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
-import com.example.weather.app.adapter.ItemAdapterFindCity;
+import com.example.weather.app.adapter.recyclerView.ItemAdapterFindCity;
 
 import java.util.List;
 

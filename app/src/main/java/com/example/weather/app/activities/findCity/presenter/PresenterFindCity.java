@@ -9,7 +9,7 @@ import com.example.weather.MainApp;
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
 import com.example.weather.app.activities.findCity.model.iModelFindCity;
 import com.example.weather.app.activities.findCity.view.ViewFindCity;
-import com.example.weather.app.adapter.ItemAdapterFindCity;
+import com.example.weather.app.adapter.recyclerView.ItemAdapterFindCity;
 import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
 
@@ -69,19 +69,6 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(listCity -> {
-//                    findCityList.clear();
-//                    for (City city : listCity) {
-//                        ItemAdapterFindCity item = ItemAdapterFindCity
-//                                .builder()
-//                                .idWeather(city.idWeather)
-//                                .country(city.country)
-//                                .build();
-//                        if (city.getCityEN() != null)
-//                            item.setNameCityEN(city.getCityEN());
-//                        if (city.getCityRU() != null)
-//                            item.setNameCityRU(city.getCityRU());
-//                        findCityList.add(item);
-//                    }
                     getViewState().updateRecyclerView(findCityList);
                 }, throwable -> {
                     Log.e(TAG, "searchViewObservable: " + throwable);

@@ -1,7 +1,6 @@
 package com.example.weather.app.activities.findCity.view;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.widget.SearchView;
@@ -12,9 +11,8 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.weather.R;
 import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
-import com.example.weather.app.adapter.AdapterFindCity;
-import com.example.weather.app.adapter.ItemAdapterFindCity;
-import com.example.weather.data.DB.city.City;
+import com.example.weather.app.adapter.recyclerView.AdapterFindCity;
+import com.example.weather.app.adapter.recyclerView.ItemAdapterFindCity;
 import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.List;
