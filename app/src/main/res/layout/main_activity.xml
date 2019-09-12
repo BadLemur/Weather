@@ -6,6 +6,7 @@
     android:layout_height="match_parent">
 
     <LinearLayout
+        android:visibility="gone"
         android:id="@+id/layout_progress_bar"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -28,8 +29,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
-        android:stateListAnimator="@null"
-        android:visibility="gone">
+        android:stateListAnimator="@null">
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
             android:layout_width="match_parent"
@@ -49,35 +49,24 @@
                     app:layout_collapseMode="pin" />
 
                 <com.google.android.material.tabs.TabLayout
-                    android:id="@+id/main_tab_layout"
-                    android:layout_width="match_parent"
+                    android:id="@+id/tab_layout"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:scrollbarStyle="insideInset"
                     app:tabGravity="center" />
 
-                <androidx.viewpager.widget.ViewPager
-                    android:id="@+id/main_view_pager"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    app:layout_behavior="@string/appbar_scrolling_view_behavior"
-                    app:layout_constraintTop_toBottomOf="@+id/main_tab_layout" />
+
 
             </androidx.appcompat.widget.LinearLayoutCompat>
         </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
-
-    <androidx.core.widget.NestedScrollView
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintTop_toBottomOf="@+id/tab_layout" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:lineSpacingExtra="8sp"
-            android:padding="16dp"
-            android:textSize="20sp" />
-    </androidx.core.widget.NestedScrollView>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

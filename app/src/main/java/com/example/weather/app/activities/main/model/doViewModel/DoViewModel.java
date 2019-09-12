@@ -1,14 +1,15 @@
 package com.example.weather.app.activities.main.model.doViewModel;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.main.presenter.iPresenterMainActivity;
+import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
 
 import javax.inject.Inject;
 
+import io.reactivex.Completable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -32,7 +33,16 @@ public class DoViewModel implements iDoViewModel {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe((cityUsersList, throwable) -> {
                     presenter.setCityUser(cityUsersList);
-                    Log.d(TAG, "doViewCity: " + throwable);
                 });
+    }
+
+    @Override
+    public void addNewCity(long idWearer) {
+        Completable.fromAction(() -> {
+            cityUserDAO.add(new CityUser(idWearer));
+        })
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe();
     }
 }

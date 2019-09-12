@@ -14,4 +14,7 @@ public interface ViewMainActivity extends MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy.class)
     void loadFindCity();
+
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void addCity(long idWeather);
 }
