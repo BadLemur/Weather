@@ -45,10 +45,4 @@ public class TabsFragmentPageAdapter extends FragmentPagerAdapter {
         return fragmentArrayList.size();
     }
 
-
-//    @Nullable
-//    @Override
-//    public CharSequence getPageTitle(int position) {
-//        return fragmentArrayList.get(position).;
-//    }
 }

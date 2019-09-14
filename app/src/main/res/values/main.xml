@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="city">City</string>
-    <string name="connect_server">Connect server</string>
+    <string name="connection_to_server">Connection to server</string>
     <string name="celsius">℃</string>
     <string name="weather">weather</string>
     <string name="show_forecast">Прогноз на 5 дней</string>

@@ -5,6 +5,7 @@ import com.arellomobile.mvp.MvpPresenter;
 import com.example.weather.app.fragments.weatherCity.model.ModelWeatherCity;
 import com.example.weather.app.fragments.weatherCity.model.iModelWeatherCity;
 import com.example.weather.app.fragments.weatherCity.view.ViewWeatherCity;
+import com.example.weather.data.network.data.DataWeather;
 
 @InjectViewState
 public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implements iPresenterWeatherCity {
@@ -20,7 +21,10 @@ public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implemen
     }
 
     @Override
-    public void setDataWeather() {
-
+    public void setDataWeather(DataWeather dataWeather) {
+        String nameCity = dataWeather.getName();
+        int t = (int) dataWeather.getMain().getTemp();
+        String temp = t + "";
+        getViewState().setData(nameCity, temp);
     }
 }

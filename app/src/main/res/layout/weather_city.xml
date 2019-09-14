@@ -21,11 +21,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_connect_server"
+        android:visibility="gone"
+        android:id="@+id/tv_connection_to_server"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="@string/connect_server"
+        android:text="@string/connection_to_server"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,7 +37,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="tv_connect_server,progressBar" />
+        app:constraint_referenced_ids="tv_connection_to_server,progressBar" />
 
     <TextView
         android:id="@+id/tv_name_city"
@@ -53,12 +54,11 @@
         android:id="@+id/tv_temp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="17"
         android:textSize="65sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.047"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_connect_server" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_connection_to_server" />
 
     <TextView
         android:id="@+id/textView3"
@@ -66,15 +66,15 @@
         android:layout_height="wrap_content"
         android:text="@string/celsius"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintBottom_toTopOf="@+id/tv_weather"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/tv_temp"
-        app:layout_constraintTop_toBottomOf="@+id/tv_connect_server"
+        app:layout_constraintTop_toBottomOf="@+id/tv_connection_to_server"
         app:layout_constraintVertical_bias="0.229" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/tv_weather"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ясно"
@@ -87,7 +87,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:barrierDirection="bottom"
-        app:constraint_referenced_ids="textView" />
+        app:constraint_referenced_ids="tv_weather" />
 
     <ImageView
         android:id="@+id/image_weather_city"
