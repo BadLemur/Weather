@@ -6,6 +6,7 @@ import com.example.weather.app.activities.main.model.doCreateDB.ModelLoader;
 import com.example.weather.app.activities.main.model.doCreateDB.CreateFirstDB;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
 import com.example.weather.app.adapter.TabsFragmentPageAdapter;
+import com.example.weather.app.fragments.weatherCity.model.ModelWeatherCity;
 import com.example.weather.data.DB.parser.ParserJson;
 import com.example.weather.data.dagger.module.MainAppModule;
 
@@ -30,4 +31,6 @@ public interface MainAppComponent {
     void inject(PresenterFindCity app);
 
     void inject(TabsFragmentPageAdapter app);
+
+    void inject(ModelWeatherCity app);
 }

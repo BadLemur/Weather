@@ -22,7 +22,7 @@ public class MainAppModule {
     }
 
     @Singleton
-    @Provides //scope is not necessary for parameters stored within the module
+    @Provides
     public Context context() {
         return context;
     }

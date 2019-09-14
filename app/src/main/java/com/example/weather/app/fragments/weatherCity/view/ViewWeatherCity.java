@@ -1,4 +1,4 @@
-package com.example.weather.app.fragments.weatherCity;
+package com.example.weather.app.fragments.weatherCity.view;
 
 import com.arellomobile.mvp.MvpView;
 

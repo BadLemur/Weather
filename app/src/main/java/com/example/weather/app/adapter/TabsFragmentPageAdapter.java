@@ -1,21 +1,14 @@
 package com.example.weather.app.adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.os.Bundle;
 
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
-import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.example.weather.MainApp;
-import com.example.weather.app.fragments.weatherCity.WeatherCity;
-import com.example.weather.eventBus.ClickItemRecyclerView;
-
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
+import com.example.weather.app.fragments.weatherCity.view.WeatherCity;
 
 import java.util.ArrayList;
 
@@ -34,7 +27,11 @@ public class TabsFragmentPageAdapter extends FragmentPagerAdapter {
     }
 
     public void addFragment(long idWeather) {
-        fragmentArrayList.add(new WeatherCity());
+        WeatherCity city = new WeatherCity();
+        Bundle bundle = new Bundle();
+        bundle.putLong("idWeather", idWeather);
+        city.setArguments(bundle);
+        fragmentArrayList.add(city);
         this.notifyDataSetChanged();
     }
 

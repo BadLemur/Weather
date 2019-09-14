@@ -40,7 +40,7 @@ public class CreateFirstDB implements CallbackParserData, iCreateFirstDB {
         Completable.fromAction(() -> {
             new ParserJson(onCreateFirstDB);
         })
-                .subscribeOn(Schedulers.io())
+                .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe();
     }
