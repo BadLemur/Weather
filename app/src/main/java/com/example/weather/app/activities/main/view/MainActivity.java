@@ -74,8 +74,6 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     public void loadFindCity() {
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
         startActivity(intent);
-        layoutProgressBar.setVisibility(View.VISIBLE);
-        appBarLayout.setVisibility(View.GONE);
     }
 
     @Override

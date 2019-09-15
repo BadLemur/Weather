@@ -14,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class DoViewModel implements iDoViewModel {
-    private static final String TAG = "DoViewModel";
+
     @Inject
     CityUserDAO cityUserDAO;
 

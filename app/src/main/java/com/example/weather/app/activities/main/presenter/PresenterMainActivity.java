@@ -38,6 +38,7 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
     @Override
     public void onCreatedDB() {
         getViewState().doLoader();
+        modelView.doViewCity();
     }
 
     @Override

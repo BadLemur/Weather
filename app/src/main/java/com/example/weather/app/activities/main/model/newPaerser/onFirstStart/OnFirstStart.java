@@ -36,7 +36,6 @@ public class OnFirstStart implements iOnFirstStart {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(integer -> {
-                    Log.e(TAG, "OnFirstStart: " + integer);
                     if (integer == 0) {
                         iDoCreateDB doCreateDB = new DoCreateDB(this);
                         disposable = doCreateDB.createDB();
