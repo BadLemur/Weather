@@ -17,7 +17,7 @@ import java.util.List;
 import javax.inject.Inject;
 
 public class ParserJson {
-
+    private static final String TAG = "ParserJson";
     @Inject
     Context context;
 
@@ -41,10 +41,13 @@ public class ParserJson {
 
             for (int i = 0; jsonArray.size() > i; ++i)
                 weatherList.add(new Gson().fromJson(jsonArray.get(i), ParserWeather.class));
+            Log.e(TAG, "ParserJson: " + jsonArray.size());
             callback.returnListTempWeather(weatherList);
 
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 }

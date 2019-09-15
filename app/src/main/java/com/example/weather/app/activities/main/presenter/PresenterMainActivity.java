@@ -1,11 +1,13 @@
 package com.example.weather.app.activities.main.presenter;
 
+import android.util.Log;
+
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
-import com.example.weather.app.activities.main.model.doCreateDB.ModelLoader;
-import com.example.weather.app.activities.main.model.doCreateDB.iModelLoader;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
 import com.example.weather.app.activities.main.model.doViewModel.iDoViewModel;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.OnFirstStart;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.iOnFirstStart;
 import com.example.weather.app.activities.main.view.ViewMainActivity;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.eventBus.ClickItemRecyclerView;
@@ -18,26 +20,34 @@ import java.util.List;
 @InjectViewState
 public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implements iPresenterMainActivity {
     private static final String TAG = "PresenterMainActivity";
-    private iModelLoader modelLoader;
-    private iDoViewModel modelView;
 
+    private iDoViewModel modelView;
+    private iOnFirstStart firstStart;
 
     public PresenterMainActivity() {
-        modelLoader = new ModelLoader(this);
         modelView = new DoViewModel(this);
+        firstStart = new OnFirstStart(this);
+
         EventBus.getDefault().register(this);
     }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-        modelLoader.onFirstStart();
+        firstStart.onFirstStart();
     }
 
     @Override
     public void onCreatedDB() {
         getViewState().doLoader();
-        modelView.doViewCity();
+    }
+
+    private int index = 0;
+
+    @Override
+    public void setProgress(int i) {
+        index = +i;
+        Log.e(TAG, "setProgress: " + index);
     }
 
     @Override
@@ -50,8 +60,8 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
 
     @Subscribe
     public void eventClickItemRecyclerView(ClickItemRecyclerView event) {
-        modelView.addNewCity(event.getIdWeather());
-        getViewState().addCity(event.getIdWeather());
+//        modelView.addNewCity(event.getIdWeather());
+//        getViewState().addCity(event.getIdWeather());
     }
 
     @Override

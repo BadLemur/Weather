@@ -2,9 +2,10 @@ package com.example.weather.data.dagger.component;
 
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
 import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
-import com.example.weather.app.activities.main.model.doCreateDB.ModelLoader;
-import com.example.weather.app.activities.main.model.doCreateDB.CreateFirstDB;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.OnFirstStart;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.DoCreateDB;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser.NewParserJson;
 import com.example.weather.app.adapter.TabsFragmentPageAdapter;
 import com.example.weather.app.fragments.weatherCity.model.ModelWeatherCity;
 import com.example.weather.app.fragments.weatherCity.model.ReturnTypeWeather;
@@ -19,10 +20,6 @@ import dagger.Component;
 @Component(modules = {MainAppModule.class})
 public interface MainAppComponent {
 
-    void inject(ModelLoader app);
-
-    void inject(CreateFirstDB app);
-
     void inject(ModelFindCity app);
 
     void inject(ParserJson app);
@@ -36,4 +33,9 @@ public interface MainAppComponent {
     void inject(ModelWeatherCity app);
 
     void inject(ReturnTypeWeather app);
+
+    void inject(NewParserJson app);
+
+    void inject(DoCreateDB app);
+    void inject(OnFirstStart app);
 }
