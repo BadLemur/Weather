@@ -9,5 +9,5 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface ViewWeatherCity extends MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy.class)
-    void setData(String nameCity, String temp, String typeWeather);
+    void setData(String nameCity, String temp, String typeWeather, String typeWeatherIcon);
 }

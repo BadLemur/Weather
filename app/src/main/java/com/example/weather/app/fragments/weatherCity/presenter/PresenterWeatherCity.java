@@ -27,13 +27,17 @@ public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implemen
     @Override
     public void setDataWeather(GetPostDataWeather getPostDataWeather) {
         String nameCity = getPostDataWeather.getName();
-        int t = (int) getPostDataWeather.getMain().getTemp();
-        String temp = t + "";
-        String typeWeather = returnTypeWeather
+
+        String temp = String.valueOf((int) getPostDataWeather.getMain().getTemp());
+
+
+        String typeWeather = getPostDataWeather.getWeather().get(0).getDescription();
+
+        String typeWeatherIcon = returnTypeWeather
                 .getTypeWeather(getPostDataWeather.getWeather().get(0).getId(),
                         getPostDataWeather.getSys().getSunrise() * 1000,
                         getPostDataWeather.getSys().getSunset() * 1000);
 
-        getViewState().setData(nameCity, temp, typeWeather);
+        getViewState().setData(nameCity, temp, typeWeather, typeWeatherIcon);
     }
 }

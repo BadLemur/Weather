@@ -54,11 +54,11 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
     }
 
     @Override
-    public void setData(String nameCity, String temp, String typeWeather) {
+    public void setData(String nameCity, String temp, String typeWeather, String typeWeatherIcon) {
         this.nameCity.setText(nameCity);
         this.temp.setText(temp);
-        imageWeather.setText(typeWeather);
-
+        weather.setText(typeWeather);
+        imageWeather.setText(typeWeatherIcon);
     }
 
     @Override
