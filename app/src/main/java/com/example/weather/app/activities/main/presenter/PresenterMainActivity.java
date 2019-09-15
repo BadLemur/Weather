@@ -42,13 +42,6 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
         getViewState().doLoader();
     }
 
-    private int index = 0;
-
-    @Override
-    public void setProgress(int i) {
-        index = +i;
-    }
-
     @Override
     public void setCityUser(List<CityUser> list) {
         if (list.size() > 0) {

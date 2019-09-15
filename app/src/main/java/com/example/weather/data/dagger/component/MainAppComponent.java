@@ -5,7 +5,7 @@ import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
 import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.OnFirstStart;
 import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.DoCreateDB;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser.NewParserJson;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserFile.NewParserJson;
 import com.example.weather.app.adapter.TabsFragmentPageAdapter;
 import com.example.weather.app.fragments.weatherCity.model.ModelWeatherCity;
 import com.example.weather.app.fragments.weatherCity.model.ReturnTypeWeather;

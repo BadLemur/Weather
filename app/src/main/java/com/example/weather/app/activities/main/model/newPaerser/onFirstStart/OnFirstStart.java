@@ -12,6 +12,7 @@ import com.example.weather.data.DB.city.CityDAO;
 import javax.inject.Inject;
 
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
 
 public class OnFirstStart implements iOnFirstStart {
@@ -26,6 +27,8 @@ public class OnFirstStart implements iOnFirstStart {
         this.presenter = presenter;
     }
 
+    private Disposable disposable;
+
     @SuppressLint("CheckResult")
     @Override
     public void onFirstStart() {
@@ -36,18 +39,14 @@ public class OnFirstStart implements iOnFirstStart {
                     Log.e(TAG, "OnFirstStart: " + integer);
                     if (integer == 0) {
                         iDoCreateDB doCreateDB = new DoCreateDB(this);
-                        doCreateDB.createDB();
+                        disposable = doCreateDB.createDB();
                     } else presenter.onCreatedDB();
                 }, throwable -> Log.e(TAG, "OnFirstStart: ", throwable));
     }
 
     @Override
-    public void onProgress(int i) {
-        presenter.setProgress(i);
-    }
-
-    @Override
     public void onComplete() {
         presenter.onCreatedDB();
+        disposable.dispose();
     }
 }

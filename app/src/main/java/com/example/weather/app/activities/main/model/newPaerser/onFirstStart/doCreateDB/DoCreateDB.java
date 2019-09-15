@@ -1,8 +1,12 @@
 package com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB;
 
+import android.util.Log;
+
 import com.example.weather.MainApp;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser.NewParserJson;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser.iNewParserJson;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserCity.ParserCity;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserCity.iParserCity;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserFile.NewParserJson;
+import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserFile.iNewParserJson;
 import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.iOnFirstStart;
 import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
@@ -23,7 +27,10 @@ import io.reactivex.schedulers.Schedulers;
 
 public class DoCreateDB implements iDoCreateDB {
     private static final String TAG = "DoCreateDB";
+
     private iNewParserJson parserJson;
+    private iParserCity parserCity;
+
     private iOnFirstStart firstStart;
 
     @Inject CityDAO cityDAO;
@@ -31,73 +38,21 @@ public class DoCreateDB implements iDoCreateDB {
     public DoCreateDB(iOnFirstStart firstStart) {
         MainApp.app().appComponent().inject(this);
         parserJson = new NewParserJson();
+        parserCity = new ParserCity();
         this.firstStart = firstStart;
     }
 
     @Override
-    public void createDB() {
-        Observable<List<ParserWeather>> observable = parserJson.returnListTempWeather();
+    public Disposable createDB() {
 
-        observable
+        return parserJson.returnListTempWeather()
                 .subscribeOn(Schedulers.io())
                 .concatMap((Function<List<ParserWeather>, Observable<List<City>>>) parserWeathers -> {
-                    Observable<List<City>> listFlowable = Observable.create(emitter -> {
-                        List<City> cityList = new ArrayList<>();
-                        for (int index = 0; parserWeathers.size() > index; ++index) {
-                            ParserWeather weather = parserWeathers.get(index);
-                            City city = City.builder()
-                                    .idWeather(weather.getId())
-                                    .country(weather.getCountry())
-                                    .cityEN(weather.getNameCity())
-                                    .build();
-                            if (weather.getLangs() != null)
-                                for (int i = 0; weather.getLangs().size() > i; ++i) {
-                                    Map<String, String> map = weather.getLangs().get(i);
-                                    if (map.containsKey("ru")) {
-                                        city.setCityRU(map.get("ru"));
-                                        city.setCityRUToLower(map.get("ru").toLowerCase());
-                                    }
-                                }
-                            cityList.add(city);
-                        }
-                        cityDAO.addAll(cityList);
-                        emitter.onNext(cityList);
-
-                    });
-
-                    return listFlowable;
+                    return parserCity.getListObservable(parserWeathers);
                 })
-                .concatMap(new Function<List<City>, Observable<Integer>>() {
-                    @Override
-                    public Observable<Integer> apply(List<City> cityList) throws Exception {
-                        Observable<Integer> integerFlowable = Observable.create(emitter ->
-                                emitter.onNext(cityList.size()));
-                        return integerFlowable;
-                    }
-                })
+                .doOnNext(cityList -> cityDAO.addAll(cityList))
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Integer>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Integer integer) {
-//                        Log.e(TAG, "onNext: " + integer);
-//                        firstStart.onProgress(integer);
-                        firstStart.onComplete();
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-                        firstStart.onComplete();
-                    }
-                });
+                .subscribe(cityList -> firstStart.onComplete(),
+                        throwable -> Log.e(TAG, "createDB: ", throwable));
     }
 }

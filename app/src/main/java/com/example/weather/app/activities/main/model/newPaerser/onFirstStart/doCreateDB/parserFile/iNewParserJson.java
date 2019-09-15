@@ -1,4 +1,4 @@
-package com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser;
+package com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserFile;
 
 import com.example.weather.data.DB.parser.ParserWeather;
 
