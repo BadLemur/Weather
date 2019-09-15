@@ -1,7 +1,5 @@
 package com.example.weather.app.activities.main.presenter;
 
-import android.util.Log;
-
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;

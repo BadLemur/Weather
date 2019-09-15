@@ -21,13 +21,12 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView nameRuCity, nameEnCity, country;
+        private TextView nameEnCity, country;
         private LinearLayout layout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             layout = itemView.findViewById(R.id.find_city_layout);
-            nameRuCity = itemView.findViewById(R.id.tv_name_ru_city_adapter);
             nameEnCity = itemView.findViewById(R.id.tv_name_en_city_adapter);
             country = itemView.findViewById(R.id.tv_country_adapter);
 
@@ -52,8 +51,6 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         ItemAdapterFindCity item = list.get(position);
         holder.country.setText(item.getCountry().trim());
-        if (item.getNameCityRU() != null)
-            holder.nameRuCity.setText(item.getNameCityRU().trim());
         if (item.getNameCityEN() != null)
             holder.nameEnCity.setText(item.getNameCityEN().trim());
         holder.layout.setOnClickListener(view -> {

@@ -60,8 +60,6 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
                                 .build();
                         if (city.getCityEN() != null)
                             item.setNameCityEN(city.getCityEN());
-                        if (city.getCityRU() != null)
-                            item.setNameCityRU(city.getCityRU());
                         findCityList.add(item);
                     }
                     return findCityList;

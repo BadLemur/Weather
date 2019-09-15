@@ -5,7 +5,6 @@ import com.example.weather.data.DB.parser.ParserWeather;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import io.reactivex.Observable;
 
@@ -22,14 +21,6 @@ public class ParserCity implements iParserCity {
                         .country(weather.getCountry())
                         .cityEN(weather.getNameCity())
                         .build();
-                if (weather.getLangs() != null)
-                    for (int i = 0; weather.getLangs().size() > i; ++i) {
-                        Map<String, String> map = weather.getLangs().get(i);
-                        if (map.containsKey("ru")) {
-                            city.setCityRU(map.get("ru"));
-                            city.setCityRUToLower(map.get("ru").toLowerCase());
-                        }
-                    }
                 cityList.add(city);
             }
             emitter.onNext(cityList);

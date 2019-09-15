@@ -12,14 +12,11 @@ import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
 import com.example.weather.data.DB.parser.ParserWeather;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;

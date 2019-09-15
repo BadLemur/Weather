@@ -37,5 +37,6 @@ public interface MainAppComponent {
     void inject(NewParserJson app);
 
     void inject(DoCreateDB app);
+
     void inject(OnFirstStart app);
 }

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Weather</string>
-    <string name="popular_cities">Популярные города</string>
-    <string name="please_wait">Пожалуйста подождите, загрузка данных</string>
-</resources>
