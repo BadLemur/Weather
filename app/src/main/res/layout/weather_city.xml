@@ -3,31 +3,31 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
     android:layout_marginLeft="8dp"
     android:layout_marginTop="8dp"
     android:layout_marginRight="8dp"
     android:layout_marginBottom="8dp"
+    android:background="@color/colorAccent"
     android:orientation="vertical">
 
     <ProgressBar
-        android:visibility="gone"
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:visibility="gone"
         android:id="@+id/tv_connection_to_server"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="@string/connection_to_server"
         android:textSize="12sp"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/progressBar" />
@@ -75,9 +75,9 @@
 
     <TextView
         android:id="@+id/tv_weather"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ясно"
+        android:gravity="center"
         app:layout_constraintEnd_toEndOf="@+id/tv_temp"
         app:layout_constraintStart_toStartOf="@+id/tv_temp"
         app:layout_constraintTop_toBottomOf="@+id/tv_temp" />
@@ -92,9 +92,10 @@
     <TextView
         android:id="@+id/tv_image_weather_city"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:textSize="70sp"
+        android:layout_height="100dp"
+        android:gravity="center"
         android:scaleType="fitXY"
+        android:textSize="70sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/barrier4" />

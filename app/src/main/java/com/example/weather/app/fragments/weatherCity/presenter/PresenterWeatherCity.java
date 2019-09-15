@@ -30,8 +30,7 @@ public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implemen
 
         String temp = String.valueOf((int) getPostDataWeather.getMain().getTemp());
 
-
-        String typeWeather = getPostDataWeather.getWeather().get(0).getDescription();
+        String typeWeather = getPostDataWeather.getWeather().get(0).getDescription().toUpperCase();
 
         String typeWeatherIcon = returnTypeWeather
                 .getTypeWeather(getPostDataWeather.getWeather().get(0).getId(),
