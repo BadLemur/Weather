@@ -3,17 +3,21 @@ package com.example.weather.app.fragments.weatherCity.presenter;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.example.weather.app.fragments.weatherCity.model.ModelWeatherCity;
+import com.example.weather.app.fragments.weatherCity.model.ReturnTypeWeather;
 import com.example.weather.app.fragments.weatherCity.model.iModelWeatherCity;
+import com.example.weather.app.fragments.weatherCity.model.iReturnTypeWeather;
 import com.example.weather.app.fragments.weatherCity.view.ViewWeatherCity;
-import com.example.weather.data.network.data.DataWeather;
+import com.example.weather.data.network.data.GetPostDataWeather;
 
 @InjectViewState
 public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implements iPresenterWeatherCity {
 
     private iModelWeatherCity model;
+    private iReturnTypeWeather returnTypeWeather;
 
     public PresenterWeatherCity() {
         model = new ModelWeatherCity(this);
+        returnTypeWeather = new ReturnTypeWeather();
     }
 
     public void setIdWeather(long idWeather) {
@@ -21,10 +25,15 @@ public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implemen
     }
 
     @Override
-    public void setDataWeather(DataWeather dataWeather) {
-        String nameCity = dataWeather.getName();
-        int t = (int) dataWeather.getMain().getTemp();
+    public void setDataWeather(GetPostDataWeather getPostDataWeather) {
+        String nameCity = getPostDataWeather.getName();
+        int t = (int) getPostDataWeather.getMain().getTemp();
         String temp = t + "";
-        getViewState().setData(nameCity, temp);
+        String typeWeather = returnTypeWeather
+                .getTypeWeather(getPostDataWeather.getWeather().get(0).getId(),
+                        getPostDataWeather.getSys().getSunrise() * 1000,
+                        getPostDataWeather.getSys().getSunset() * 1000);
+
+        getViewState().setData(nameCity, temp, typeWeather);
     }
 }

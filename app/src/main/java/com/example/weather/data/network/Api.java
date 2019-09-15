@@ -1,6 +1,6 @@
 package com.example.weather.data.network;
 
-import com.example.weather.data.network.data.DataWeather;
+import com.example.weather.data.network.data.GetPostDataWeather;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -17,7 +17,7 @@ public interface Api {
     String DOMAIN = "https://api.openweathermap.org";
 
     @GET("/data/2.5/weather")
-    Observable<DataWeather> getDataWeatherByCity(@Query("id") long idWeather, @Query("appid") String appId, @Query("units") String units);
+    Observable<GetPostDataWeather> getDataWeatherByCity(@Query("id") long idWeather, @Query("appid") String appId, @Query("units") String units);
 
     class Instance {
         private static Retrofit getRetrofit() {
