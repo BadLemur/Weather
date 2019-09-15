@@ -4,9 +4,9 @@ import com.example.weather.data.DB.parser.ParserWeather;
 
 import java.util.List;
 
-import io.reactivex.Flowable;
+import io.reactivex.Observable;
 
 public interface iNewParserJson {
 
-    Flowable<List<ParserWeather>> returnListTempWeather();
+    Observable<List<ParserWeather>> returnListTempWeather();
 }

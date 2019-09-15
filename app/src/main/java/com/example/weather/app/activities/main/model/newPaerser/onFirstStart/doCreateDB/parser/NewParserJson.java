@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import com.example.weather.MainApp;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser.iNewParserJson;
 import com.example.weather.data.DB.parser.ParserWeather;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -16,15 +15,12 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
-import io.reactivex.FlowableEmitter;
-import io.reactivex.FlowableOnSubscribe;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.schedulers.Schedulers;
+import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
 
 public class NewParserJson implements iNewParserJson {
-    private static final String TAG = "NewParserJson";
+
     @Inject Context context;
 
     public NewParserJson() {
@@ -32,11 +28,12 @@ public class NewParserJson implements iNewParserJson {
     }
 
     @Override
-    public Flowable<List<ParserWeather>> returnListTempWeather() {
+    public Observable<List<ParserWeather>> returnListTempWeather() {
 
-        Flowable<List<ParserWeather>> flowable = Flowable.create(new FlowableOnSubscribe<List<ParserWeather>>() {
+        Observable<List<ParserWeather>> observable = Observable.create(new ObservableOnSubscribe<List<ParserWeather>>() {
+
             @Override
-            public void subscribe(FlowableEmitter<List<ParserWeather>> emitter) throws Exception {
+            public void subscribe(ObservableEmitter<List<ParserWeather>> emitter) throws Exception {
                 String strJson;
                 AssetManager assetManager = context.getAssets();
                 InputStream stream = assetManager.open("city.json");
@@ -44,30 +41,19 @@ public class NewParserJson implements iNewParserJson {
                 byte[] buffer = new byte[size];
                 stream.read(buffer);
                 stream.close();
+
                 strJson = new String(buffer, "UTF-8");
                 JsonParser parser = new JsonParser();
-
                 Object obj = parser.parse(strJson);
                 JsonArray jsonArray = (JsonArray) obj;
                 List<ParserWeather> weatherList = new ArrayList<>();
-                int index = 0;
-
+                Gson gson = new Gson();
                 for (int i = 0; jsonArray.size() > i; ++i) {
-                    weatherList.add(new Gson().fromJson(jsonArray.get(i), ParserWeather.class));
-                    ++index;
-                    if (index == 300) {
-                        emitter.onNext(weatherList);
-                        weatherList.clear();
-                        index = 0;
-                    }
+                    weatherList.add(gson.fromJson(jsonArray.get(i), ParserWeather.class));
                 }
                 emitter.onNext(weatherList);
-
-                emitter.onComplete();
             }
-        }, BackpressureStrategy.BUFFER)
-                .subscribeOn(Schedulers.io());
-
-        return flowable;
+        });
+        return observable;
     }
 }

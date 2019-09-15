@@ -47,7 +47,6 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
     @Override
     public void setProgress(int i) {
         index = +i;
-        Log.e(TAG, "setProgress: " + index);
     }
 
     @Override
@@ -60,8 +59,8 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
 
     @Subscribe
     public void eventClickItemRecyclerView(ClickItemRecyclerView event) {
-//        modelView.addNewCity(event.getIdWeather());
-//        getViewState().addCity(event.getIdWeather());
+        modelView.addNewCity(event.getIdWeather());
+        getViewState().addCity(event.getIdWeather());
     }
 
     @Override

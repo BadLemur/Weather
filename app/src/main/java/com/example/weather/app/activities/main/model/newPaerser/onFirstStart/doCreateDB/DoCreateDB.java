@@ -1,8 +1,5 @@
 package com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB;
 
-import android.annotation.SuppressLint;
-import android.util.Log;
-
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser.NewParserJson;
 import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parser.iNewParserJson;
@@ -11,18 +8,16 @@ import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
 import com.example.weather.data.DB.parser.ParserWeather;
 
-import org.reactivestreams.Subscription;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
 
-import io.reactivex.BackpressureStrategy;
-import io.reactivex.Flowable;
-import io.reactivex.FlowableSubscriber;
+import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
@@ -41,20 +36,15 @@ public class DoCreateDB implements iDoCreateDB {
 
     @Override
     public void createDB() {
-        setFlowable(parserJson.returnListTempWeather());
-    }
+        Observable<List<ParserWeather>> observable = parserJson.returnListTempWeather();
 
-    @SuppressLint("CheckResult")
-    @Override
-    public void setFlowable(Flowable<List<ParserWeather>> flowable) {
-        flowable
+        observable
                 .subscribeOn(Schedulers.io())
-                .concatMap((Function<List<ParserWeather>, Flowable<List<City>>>) parserWeathers -> {
-                    Flowable<List<City>> listFlowable = Flowable.create(emitter -> {
+                .concatMap((Function<List<ParserWeather>, Observable<List<City>>>) parserWeathers -> {
+                    Observable<List<City>> listFlowable = Observable.create(emitter -> {
                         List<City> cityList = new ArrayList<>();
                         for (int index = 0; parserWeathers.size() > index; ++index) {
                             ParserWeather weather = parserWeathers.get(index);
-//                        for (ParserWeather weather : parserWeathers)
                             City city = City.builder()
                                     .idWeather(weather.getId())
                                     .country(weather.getCountry())
@@ -70,47 +60,43 @@ public class DoCreateDB implements iDoCreateDB {
                                 }
                             cityList.add(city);
                         }
-                        Log.e(TAG, "apply: " + "block");
-//                        cityDAO.addAll(cityList);
+                        cityDAO.addAll(cityList);
                         emitter.onNext(cityList);
 
-                    }, BackpressureStrategy.BUFFER);
+                    });
 
                     return listFlowable;
                 })
-                .subscribeOn(Schedulers.io())
-                .concatMap(new Function<List<City>, Flowable<Integer>>() {
+                .concatMap(new Function<List<City>, Observable<Integer>>() {
                     @Override
-                    public Flowable<Integer> apply(List<City> cityList) throws Exception {
-                        Flowable<Integer> integerFlowable = Flowable.create(emitter ->
-                                emitter.onNext(cityList.size()), BackpressureStrategy.BUFFER);
+                    public Observable<Integer> apply(List<City> cityList) throws Exception {
+                        Observable<Integer> integerFlowable = Observable.create(emitter ->
+                                emitter.onNext(cityList.size()));
                         return integerFlowable;
                     }
                 })
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new FlowableSubscriber<Integer>() {
+                .subscribe(new Observer<Integer>() {
                     @Override
-                    public void onSubscribe(Subscription s) {
+                    public void onSubscribe(Disposable d) {
 
                     }
 
                     @Override
                     public void onNext(Integer integer) {
-                        Log.e(TAG, "onNext: " + integer);
-                        firstStart.onProgress(integer);
-//                        ter.setProgress(integer);
+//                        Log.e(TAG, "onNext: " + integer);
+//                        firstStart.onProgress(integer);
+                        firstStart.onComplete();
                     }
 
                     @Override
-                    public void onError(Throwable t) {
-                        Log.e(TAG, "onError: ", t);
+                    public void onError(Throwable e) {
+
                     }
 
                     @Override
                     public void onComplete() {
                         firstStart.onComplete();
-//                        presenter.onCreatedDB();
                     }
                 });
     }

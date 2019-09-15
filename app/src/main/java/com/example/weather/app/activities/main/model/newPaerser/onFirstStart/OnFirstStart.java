@@ -37,7 +37,7 @@ public class OnFirstStart implements iOnFirstStart {
                     if (integer == 0) {
                         iDoCreateDB doCreateDB = new DoCreateDB(this);
                         doCreateDB.createDB();
-                    }
+                    } else presenter.onCreatedDB();
                 }, throwable -> Log.e(TAG, "OnFirstStart: ", throwable));
     }
 
