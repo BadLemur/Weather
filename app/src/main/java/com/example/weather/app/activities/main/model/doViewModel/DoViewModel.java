@@ -5,7 +5,6 @@ import android.util.Log;
 
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.main.presenter.controlViewPager.iPresenterMainActivityControlViewPager;
-import com.example.weather.app.activities.main.presenter.loader.iPresenterMainActivityLoader;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
 

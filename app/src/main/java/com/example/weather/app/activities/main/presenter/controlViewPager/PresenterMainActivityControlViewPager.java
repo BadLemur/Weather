@@ -31,19 +31,25 @@ public class PresenterMainActivityControlViewPager extends MvpPresenter<ViewMain
 
     @Override
     public void setCityUser(List<CityUser> list) {
-        getViewState().updateViewPager();
-
         if (list.size() > 0) {
             for (CityUser cityUser : list)
                 listCity.add(cityUser.idWeather);
+            getViewState().updateViewPager();
         } else getViewState().loadFindCity();
     }
 
+    /*если id есть, просто переключает на него,
+     если нет, добавляет в список и переключает на него*/
     @Subscribe
     public void eventClickItemRecyclerView(ClickItemRecyclerView event) {
+        for (int i = 0; listCity.size() > i; ++i) {
+            if (listCity.get(i) == event.getIdWeather()) {
+                getViewState().showPositionViewPager(i - 1);
+                return;
+            }
+        }
         modelView.addNewCity(event.getIdWeather());
         listCity.add(event.getIdWeather());
-
         getViewState().showPositionViewPager(listCity.size() - 1);
     }
 

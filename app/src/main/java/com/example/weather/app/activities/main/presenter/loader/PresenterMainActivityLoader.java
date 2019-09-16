@@ -17,7 +17,6 @@ import java.util.List;
 
 @InjectViewState
 public class PresenterMainActivityLoader extends MvpPresenter<ViewMainActivity> implements iPresenterMainActivityLoader {
-    private static final String TAG = "PresenterMainActivityLoader";
 
     private iOnFirstStart firstStart;
 
@@ -34,5 +33,6 @@ public class PresenterMainActivityLoader extends MvpPresenter<ViewMainActivity> 
     @Override
     public void onCreatedDB() {
         getViewState().doLoader();
+        getViewState().showViewPager();
     }
 }

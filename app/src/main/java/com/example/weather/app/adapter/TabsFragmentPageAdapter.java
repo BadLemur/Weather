@@ -22,7 +22,7 @@ public class TabsFragmentPageAdapter extends FragmentStatePagerAdapter {
 
     public void setListCity(List<Long> idCityList) {
         this.idCityList = idCityList;
-        updateListCity();
+        this.notifyDataSetChanged();
     }
 
     public void updateListCity() {

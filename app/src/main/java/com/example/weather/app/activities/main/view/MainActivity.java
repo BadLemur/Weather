@@ -70,6 +70,10 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     public void doLoader() {
         layoutProgressBar.setVisibility(View.GONE);
         appBarLayout.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showViewPager() {
         controlViewPager.showCityUser();
     }
 

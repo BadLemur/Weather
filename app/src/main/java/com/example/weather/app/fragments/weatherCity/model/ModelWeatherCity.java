@@ -35,7 +35,6 @@ public class ModelWeatherCity implements iModelWeatherCity {
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(dataWeather -> {
-                    Log.e(TAG, "setIdWeather: " + dataWeather.getName() );
                     presenter.setDataWeather(dataWeather);
                 }, throwable -> Log.e(TAG, "setIdWeather: " + throwable));
     }

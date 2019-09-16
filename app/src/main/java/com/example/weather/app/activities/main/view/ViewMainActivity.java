@@ -10,15 +10,18 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface ViewMainActivity extends MvpView {
     /*    PresenterMainActivityLoader*/
     @StateStrategyType(AddToEndSingleStrategy.class)
-    void doLoader();
+    void loadFindCity();
 
     @StateStrategyType(AddToEndSingleStrategy.class)
-    void loadFindCity();
+    void doLoader();
+
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void showViewPager();
 
     /*    PresenterMainActivityControlViewPager*/
     @StateStrategyType(OneExecutionStateStrategy.class)
     void showPositionViewPager(int position);
 
-    @StateStrategyType(OneExecutionStateStrategy.class)
+    @StateStrategyType(AddToEndSingleStrategy.class)
     void updateViewPager();
 }
