@@ -86,7 +86,8 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
 
     @Override
     public void showPositionViewPager(int position) {
-
+        adapter.updateListCity();
+        viewPager.setCurrentItem(position);
     }
 
     @Override
