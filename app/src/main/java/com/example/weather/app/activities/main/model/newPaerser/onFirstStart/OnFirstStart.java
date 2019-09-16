@@ -6,7 +6,7 @@ import android.util.Log;
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.DoCreateDB;
 import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.iDoCreateDB;
-import com.example.weather.app.activities.main.presenter.iPresenterMainActivity;
+import com.example.weather.app.activities.main.presenter.loader.iPresenterMainActivityLoader;
 import com.example.weather.data.DB.city.CityDAO;
 
 import javax.inject.Inject;
@@ -20,9 +20,9 @@ public class OnFirstStart implements iOnFirstStart {
     @Inject
     CityDAO cityDAO;
 
-    private iPresenterMainActivity presenter;
+    private iPresenterMainActivityLoader presenter;
 
-    public OnFirstStart(iPresenterMainActivity presenter) {
+    public OnFirstStart(iPresenterMainActivityLoader presenter) {
         MainApp.app().appComponent().inject(this);
         this.presenter = presenter;
     }

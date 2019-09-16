@@ -1,9 +1,11 @@
 package com.example.weather.app.activities.main.model.doViewModel;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.example.weather.MainApp;
-import com.example.weather.app.activities.main.presenter.iPresenterMainActivity;
+import com.example.weather.app.activities.main.presenter.controlViewPager.iPresenterMainActivityControlViewPager;
+import com.example.weather.app.activities.main.presenter.loader.iPresenterMainActivityLoader;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
 
@@ -14,13 +16,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class DoViewModel implements iDoViewModel {
-
+    private static final String TAG = "DoViewModel";
     @Inject
     CityUserDAO cityUserDAO;
 
-    private iPresenterMainActivity presenter;
+    private iPresenterMainActivityControlViewPager presenter;
 
-    public DoViewModel(iPresenterMainActivity presenter) {
+    public DoViewModel(iPresenterMainActivityControlViewPager presenter) {
         MainApp.app().appComponent().inject(this);
         this.presenter = presenter;
     }
@@ -31,9 +33,8 @@ public class DoViewModel implements iDoViewModel {
         cityUserDAO.getCityUser()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe((cityUsersList, throwable) -> {
-                    presenter.setCityUser(cityUsersList);
-                });
+                .subscribe(cityUsersList -> presenter.setCityUser(cityUsersList),
+                        throwable -> Log.e(TAG, "doViewCity: ", throwable));
     }
 
     @Override
