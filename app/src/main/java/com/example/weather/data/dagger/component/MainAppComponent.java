@@ -28,8 +28,6 @@ public interface MainAppComponent {
 
     void inject(PresenterFindCity app);
 
-    void inject(TabsFragmentPageAdapter app);
-
     void inject(ModelWeatherCity app);
 
     void inject(ReturnTypeWeather app);

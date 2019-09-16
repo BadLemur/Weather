@@ -78,7 +78,7 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
 
     @Override
     public void addCity(long idWeather) {
-        adapter.addFragment(idWeather);
+        adapter.addIdCity(idWeather);
     }
 
     @Override
