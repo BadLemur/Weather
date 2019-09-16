@@ -8,5 +8,7 @@ public interface iPresenterMainActivityControlViewPager {
 
     void showCityUser();
 
+    List<Long> getListCity();
+
     void setCityUser(List<CityUser> list);
 }

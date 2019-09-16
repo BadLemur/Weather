@@ -80,8 +80,13 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     }
 
     @Override
-    public void addCity(long idWeather) {
-        adapter.addIdCity(idWeather);
+    public void updateViewPager() {
+        adapter.setListCity(controlViewPager.getListCity());
+    }
+
+    @Override
+    public void showPositionViewPager(int position) {
+
     }
 
     @Override

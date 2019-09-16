@@ -19,14 +19,10 @@ import java.util.List;
 public class PresenterMainActivityLoader extends MvpPresenter<ViewMainActivity> implements iPresenterMainActivityLoader {
     private static final String TAG = "PresenterMainActivityLoader";
 
-//    private iDoViewModel modelView;
     private iOnFirstStart firstStart;
 
     public PresenterMainActivityLoader() {
-//        modelView = new DoViewModel(this);
         firstStart = new OnFirstStart(this);
-
-//        EventBus.getDefault().register(this);
     }
 
     @Override
@@ -38,20 +34,5 @@ public class PresenterMainActivityLoader extends MvpPresenter<ViewMainActivity> 
     @Override
     public void onCreatedDB() {
         getViewState().doLoader();
-//        modelView.doViewCity();
     }
-
-
-
-//    @Subscribe
-//    public void eventClickItemRecyclerView(ClickItemRecyclerView event) {
-//        modelView.addNewCity(event.getIdWeather());
-//        getViewState().addCity(event.getIdWeather());
-//    }
-
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        EventBus.getDefault().unregister(this);
-//    }
 }

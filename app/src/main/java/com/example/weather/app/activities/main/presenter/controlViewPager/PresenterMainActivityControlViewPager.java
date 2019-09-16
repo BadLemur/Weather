@@ -11,6 +11,7 @@ import com.example.weather.eventBus.ClickItemRecyclerView;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @InjectViewState
@@ -27,7 +28,8 @@ public class PresenterMainActivityControlViewPager extends MvpPresenter<ViewMain
     public void setCityUser(List<CityUser> list) {
         if (list.size() > 0) {
             for (CityUser cityUser : list)
-                getViewState().addCity(cityUser.idWeather);
+                listCity.add(cityUser.idWeather);
+            getViewState().updateViewPager();
         } else getViewState().loadFindCity();
     }
 
@@ -39,7 +41,16 @@ public class PresenterMainActivityControlViewPager extends MvpPresenter<ViewMain
     @Subscribe
     public void eventClickItemRecyclerView(ClickItemRecyclerView event) {
         modelView.addNewCity(event.getIdWeather());
-        getViewState().addCity(event.getIdWeather());
+        listCity.add(event.getIdWeather());
+
+        getViewState().showPositionViewPager(listCity.size() - 1);
+    }
+
+    private List<Long> listCity = new ArrayList<>();
+
+    @Override
+    public List<Long> getListCity() {
+        return listCity;
     }
 
     @Override

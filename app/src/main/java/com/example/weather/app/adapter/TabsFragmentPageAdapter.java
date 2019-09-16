@@ -14,23 +14,18 @@ import java.util.List;
 
 public class TabsFragmentPageAdapter extends FragmentStatePagerAdapter {
 
-    private List<Long> idCityList = new ArrayList<>();
+    private List<Long> idCityList;
 
     public TabsFragmentPageAdapter(FragmentManager fm) {
         super(fm);
     }
 
-    public void addIdCity(long idWeather) {
-        idCityList.add(idWeather);
-        this.notifyDataSetChanged();
+    public void setListCity(List<Long> idCityList) {
+        this.idCityList = idCityList;
+        updateListCity();
     }
 
-    public void removeIdCity(long idWeather) {
-        for (int i = 0; idCityList.size() > i; ++i)
-            if (idCityList.get(i) == idWeather) {
-                idCityList.remove(i);
-                break;
-            }
+    public void updateListCity() {
         this.notifyDataSetChanged();
     }
 
@@ -45,6 +40,8 @@ public class TabsFragmentPageAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
+        if (idCityList == null)
+            return 0;
         return idCityList.size();
     }
 }
