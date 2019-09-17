@@ -49,7 +49,7 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
                 .debounce(250, TimeUnit.MILLISECONDS)
                 .distinctUntilChanged()
                 .flatMap((Function<String, Observable<List<City>>>)
-                        s -> cityDAO.getFindToLike(s + "%"))
+                        s -> cityDAO.getList(s + "%"))
                 .map(listCity -> {
                     findCityList.clear();
                     for (City city : listCity) {

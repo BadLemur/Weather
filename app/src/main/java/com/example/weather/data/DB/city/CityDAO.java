@@ -25,5 +25,5 @@ public interface CityDAO {
     Maybe<Integer> getCount();
 
     @Query("Select * from city where city_en like :str limit 20")
-    Observable<List<City>> getFindToLike(String str);
+    Observable<List<City>> getList(String str);
 }

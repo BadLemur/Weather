@@ -1,7 +1,6 @@
 package com.example.weather.app.activities.main.model.addOldChoiceCity;
 
 import com.example.weather.MainApp;
-import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCity;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCityDAO;
 import com.example.weather.eventBus.ClickItemRecyclerView;
@@ -24,10 +23,19 @@ public class AddOldChoiceCity implements iAddOldChoiceCity {
         EventBus.getDefault().register(this);
     }
 
+    private int count = 10;
+
+    /*      Ограничиваем колличество записей count     */
     @Subscribe
     public void addWrite(ClickItemRecyclerView event) {
         Completable.fromAction(() -> {
-            oldChoiceCityDAO.add(new OldChoiceCity(event.getIdWeather()));
+            int count = oldChoiceCityDAO.getCount();
+            if (count < this.count)
+                oldChoiceCityDAO.add(new OldChoiceCity(event.getIdWeather()));
+            else {
+                oldChoiceCityDAO.deleteFirstWrite();
+                oldChoiceCityDAO.add(new OldChoiceCity(event.getIdWeather()));
+            }
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

@@ -9,6 +9,7 @@ import com.example.weather.data.DB.cityUser.CityUser;
 
 import java.util.List;
 
+import io.reactivex.Maybe;
 import io.reactivex.Single;
 
 @Dao
@@ -20,6 +21,12 @@ public interface OldChoiceCityDAO {
     @Query("Delete from old_choice_city where id_city =:id_server ")
     void delete(long id_server);
 
+    @Query("Delete from old_choice_city where id = (Select id from old_choice_city limit 1) ")
+    void deleteFirstWrite();
+
     @Query("Select * from old_choice_city")
-    Single<List<CityUser>> getOldChoiceCity();
+    Single<List<CityUser>> getList();
+
+    @Query("Select COUNT(*) FROM old_choice_city")
+    Integer getCount();
 }
