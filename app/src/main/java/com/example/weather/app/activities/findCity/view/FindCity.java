@@ -19,21 +19,18 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import io.reactivex.Observable;
+import butterknife.OnClick;
 
 public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
-    private static final String TAG = "FindCity";
+
     @InjectPresenter
     PresenterFindCity presenter;
 
-    @BindView(R.id.flex_box_container)
-    FlexboxLayout flexboxContainer;
+    @BindView(R.id.flex_box_container) FlexboxLayout flexboxContainer;
 
-    @BindView(R.id.recycler_list_city)
-    RecyclerView recyclerViewCity;
+    @BindView(R.id.recycler_list_city) RecyclerView recyclerViewCity;
 
-    @BindView(R.id.sw_city)
-    SearchView searchView;
+    @BindView(R.id.sw_city) SearchView searchView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,21 +41,18 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
         recyclerViewCity.setLayoutManager(layoutManager);
         recyclerViewCity.setHasFixedSize(false);
 
-        Observable<String> observable = Observable.create(emitter ->
-                searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-                    @Override
-                    public boolean onQueryTextSubmit(String query) {
-                        emitter.onNext(query);
-                        return false;
-                    }
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
 
-                    @Override
-                    public boolean onQueryTextChange(String newText) {
-                        emitter.onNext(newText);
-                        return false;
-                    }
-                }));
-        presenter.searchViewObservable(observable);
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                presenter.setTextSearch(newText);
+                return false;
+            }
+        });
     }
 
     private AdapterFindCity adapterFindCity;
@@ -72,6 +66,11 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
             recyclerViewCity.setAdapter(adapterFindCity);
         }
         adapterFindCity.notifyDataSetChanged();
+    }
+
+    @OnClick(R.id.btn_search_city)
+    public void SearchCity() {
+//        presenter.
     }
 
     @Override

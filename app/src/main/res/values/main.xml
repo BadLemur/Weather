@@ -5,4 +5,8 @@
     <string name="celsius">℃</string>
     <string name="weather">weather</string>
     <string name="show_forecast">Прогноз на 5 дней</string>
+    <string name="app_name">Weather</string>
+    <string name="popular_cities">Popular cities</string>
+    <string name="please_wait">Please wait, loading data</string>
+    <string name="define_your_city">Define your city</string>
 </resources>

@@ -53,6 +53,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/barrier2">
 
+        <Button
+            android:id="@+id/btn_search_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/define_your_city" />
+
     </com.google.android.flexbox.FlexboxLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -64,15 +70,15 @@
         app:layout_constraintTop_toBottomOf="@+id/flex_box_container">
 
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_margin="8dp"
-                android:id="@+id/recycler_list_city"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="16dp"
-                android:visibility="gone"/>
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/barrier" />-->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_list_city"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:paddingTop="16dp"
+            android:visibility="gone" />
+        <!--                app:layout_constraintEnd_toEndOf="parent"-->
+        <!--                app:layout_constraintStart_toStartOf="parent"-->
+        <!--                app:layout_constraintTop_toBottomOf="@+id/barrier" />-->
     </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
