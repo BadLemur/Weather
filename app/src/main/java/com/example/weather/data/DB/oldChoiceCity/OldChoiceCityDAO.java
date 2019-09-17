@@ -15,7 +15,7 @@ import io.reactivex.Single;
 public interface OldChoiceCityDAO {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void add(CityUser cityUser);
+    void add(OldChoiceCity oldChoiceCity);
 
     @Query("Delete from old_choice_city where id_city =:id_server ")
     void delete(long id_server);
