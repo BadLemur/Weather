@@ -26,7 +26,7 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
 
     @Override
     public void subscribeTextSearch(List<ItemAdapterFindCity> itemAdapterFindCities) {
-
+        getViewState().updateRecyclerView(itemAdapterFindCities);
     }
 
     public void disposable() {

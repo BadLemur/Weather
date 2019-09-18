@@ -21,6 +21,7 @@ import io.reactivex.ObservableOnSubscribe;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import lombok.Getter;
 
 public class ModelFindCity implements iModelFindCity {
     private static final String TAG = "ModelFindCity";
@@ -28,6 +29,7 @@ public class ModelFindCity implements iModelFindCity {
     CityDAO cityDAO;
 
     private iPresenterFindCity presenter;
+    @Getter
     private List<ItemAdapterFindCity> findCityList = new ArrayList<>();
     private ObservableEmitter<String> observableEmitter;
     private Disposable disposable;

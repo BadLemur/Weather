@@ -6,8 +6,6 @@ import java.util.List;
 
 public interface iPresenterFindCity {
 
-//    void setTextSearch(Observable<String> observable);
-
     void setTextSearch(String str);
 
     void subscribeTextSearch(List<ItemAdapterFindCity> itemAdapterFindCities);
