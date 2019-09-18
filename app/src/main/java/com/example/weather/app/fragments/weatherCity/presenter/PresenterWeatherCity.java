@@ -14,6 +14,7 @@ public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implemen
 
     private iModelWeatherCity model;
     private iReturnTypeWeather returnTypeWeather;
+    private long idWeather;
 
     public PresenterWeatherCity() {
         model = new ModelWeatherCity(this);
@@ -21,11 +22,13 @@ public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implemen
     }
 
     public void setIdWeather(long idWeather) {
+        this.idWeather = idWeather;
         model.setIdWeather(idWeather);
     }
 
     @Override
     public void setDataWeather(GetPostDataWeather getPostDataWeather) {
+        getViewState().goneUpdateData();
         String nameCity = getPostDataWeather.getName();
 
         String temp = String.valueOf((int) getPostDataWeather.getMain().getTemp());
@@ -38,5 +41,13 @@ public class PresenterWeatherCity extends MvpPresenter<ViewWeatherCity> implemen
                         getPostDataWeather.getSys().getSunset() * 1000);
 
         getViewState().setData(nameCity, temp, typeWeather, typeWeatherIcon);
+    }
+
+    @Override
+    public void setMotionSize(int height, int y1, int y2) {
+        if (y2 - y1 > height * 0.1) {
+            getViewState().showUpdateData();
+            model.setIdWeather(idWeather);
+        }
     }
 }

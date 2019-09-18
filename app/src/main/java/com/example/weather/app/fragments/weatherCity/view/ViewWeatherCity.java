@@ -10,4 +10,10 @@ public interface ViewWeatherCity extends MvpView {
 
     @StateStrategyType(OneExecutionStateStrategy.class)
     void setData(String nameCity, String temp, String typeWeather, String typeWeatherIcon);
+
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void showUpdateData();
+
+    @StateStrategyType(OneExecutionStateStrategy.class)
+    void goneUpdateData();
 }

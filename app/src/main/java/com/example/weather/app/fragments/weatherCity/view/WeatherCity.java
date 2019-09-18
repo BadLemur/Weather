@@ -1,12 +1,22 @@
 package com.example.weather.app.fragments.weatherCity.view;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
+import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.DisplayMetrics;
+import android.util.Log;
+import android.view.Display;
+import android.view.GestureDetector;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,7 +34,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity {
-
+    private static final String TAG = "WeatherCity";
     private Typeface typeface;
 
     @InjectPresenter
@@ -39,6 +49,9 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
     private View root;
     private Unbinder unbinder;
 
+    int height = 0;
+
+    @SuppressLint("ClickableViewAccessibility")
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -50,6 +63,18 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
 
         typeface = ResourcesCompat.getFont(getContext(), R.font.font);
         imageWeather.setTypeface(typeface);
+
+
+        WindowManager wm = (WindowManager) getContext().getSystemService(Context.WINDOW_SERVICE);
+        Display display = wm.getDefaultDisplay();
+        Point size = new Point();
+        display.getSize(size);
+        height = size.y;
+
+        root.setOnTouchListener((v, event) -> {
+            gestureDetector.onTouchEvent(event);
+            return true;
+        });
         return root;
     }
 
@@ -59,6 +84,28 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
         this.temp.setText(temp);
         weather.setText(typeWeather);
         imageWeather.setText(typeWeatherIcon);
+    }
+
+    GestureDetector.SimpleOnGestureListener onGestureListener =
+            new GestureDetector.SimpleOnGestureListener() {
+                @Override
+                public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                    presenter.setMotionSize(height, (int) e1.getY(), (int) e2.getY());
+                    return true;
+                }
+            };
+
+    GestureDetector gestureDetector = new GestureDetector(getContext(),
+            onGestureListener);
+
+    @Override
+    public void showUpdateData() {
+        connectionServer.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void goneUpdateData() {
+        connectionServer.setVisibility(View.GONE);
     }
 
     @Override
