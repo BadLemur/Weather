@@ -40,15 +40,15 @@ public class DoCreateDB implements iDoCreateDB {
 
     @Override
     public Disposable createDB() {
-
-        return parserJson.returnListTempWeather()
-                .subscribeOn(Schedulers.io())
-                .concatMap((Function<List<ParserWeather>, Observable<List<City>>>) parserWeathers -> {
-                    return parserCity.getListObservable(parserWeathers);
-                })
-                .doOnNext(cityList -> cityDAO.addAll(cityList))
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(cityList -> firstStart.onComplete(),
-                        throwable -> Log.e(TAG, "createDB: ", throwable));
+        return null;
+//        return parserJson.returnListTempWeather()
+//                .subscribeOn(Schedulers.io())
+//                .concatMap((Function<List<ParserWeather>, Observable<List<City>>>) parserWeathers -> {
+//                    return parserCity.getListObservable(parserWeathers);
+//                })
+//                .doOnNext(cityList -> cityDAO.addAll(cityList))
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(cityList -> firstStart.onComplete(),
+//                        throwable -> Log.e(TAG, "createDB: ", throwable));
     }
 }
