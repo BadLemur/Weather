@@ -4,7 +4,7 @@ import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.example.weather.MainApp;
-import com.example.weather.app.activities.main.presenter.controlViewPager.iPresenterMainActivityControlViewPager;
+import com.example.weather.app.activities.main.presenter.iPresenterMainActivity;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
 
@@ -19,9 +19,9 @@ public class DoViewModel implements iDoViewModel {
     @Inject
     CityUserDAO cityUserDAO;
 
-    private iPresenterMainActivityControlViewPager presenter;
+    private iPresenterMainActivity presenter;
 
-    public DoViewModel(iPresenterMainActivityControlViewPager presenter) {
+    public DoViewModel(iPresenterMainActivity presenter) {
         MainApp.app().appComponent().inject(this);
         this.presenter = presenter;
     }

@@ -1,12 +1,12 @@
-package com.example.weather.app.activities.main.model.newPaerser.onFirstStart;
+package com.example.weather.app.activities.main.model.onFirstStart;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.example.weather.MainApp;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.DoCreateDB;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.iDoCreateDB;
-import com.example.weather.app.activities.main.presenter.loader.iPresenterMainActivityLoader;
+import com.example.weather.app.activities.main.model.onFirstStart.doCreateDB.DoCreateDB;
+import com.example.weather.app.activities.main.model.onFirstStart.doCreateDB.iDoCreateDB;
+import com.example.weather.app.activities.main.presenter.iPresenterMainActivity;
 import com.example.weather.data.DB.city.CityDAO;
 
 import javax.inject.Inject;
@@ -20,9 +20,9 @@ public class OnFirstStart implements iOnFirstStart {
     @Inject
     CityDAO cityDAO;
 
-    private iPresenterMainActivityLoader presenter;
+    private iPresenterMainActivity presenter;
 
-    public OnFirstStart(iPresenterMainActivityLoader presenter) {
+    public OnFirstStart(iPresenterMainActivity presenter) {
         MainApp.app().appComponent().inject(this);
         this.presenter = presenter;
     }

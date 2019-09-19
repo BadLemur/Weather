@@ -16,8 +16,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.weather.R;
 import com.example.weather.app.activities.findCity.view.FindCity;
-import com.example.weather.app.activities.main.presenter.controlViewPager.PresenterMainActivityControlViewPager;
-import com.example.weather.app.activities.main.presenter.loader.PresenterMainActivityLoader;
+import com.example.weather.app.activities.main.presenter.PresenterMainActivity;
 import com.example.weather.app.adapter.TabsFragmentPageAdapter;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.tabs.TabLayout;
@@ -28,9 +27,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends MvpAppCompatActivity implements ViewMainActivity {
 
-    @InjectPresenter PresenterMainActivityLoader mainActivityLoader;
-
-    @InjectPresenter PresenterMainActivityControlViewPager controlViewPager;
+    @InjectPresenter PresenterMainActivity controlViewPager;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.ib_show_city) ImageButton ibShowCity;

@@ -18,7 +18,7 @@ public interface ViewMainActivity extends MvpView {
     @StateStrategyType(OneExecutionStateStrategy.class)
     void showViewPager();
 
-    /*    PresenterMainActivityControlViewPager*/
+    /*    PresenterMainActivity*/
     @StateStrategyType(OneExecutionStateStrategy.class)
     void showPositionViewPager(int position);
 

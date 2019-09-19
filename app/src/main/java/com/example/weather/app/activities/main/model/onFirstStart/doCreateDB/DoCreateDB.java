@@ -1,13 +1,13 @@
-package com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB;
+package com.example.weather.app.activities.main.model.onFirstStart.doCreateDB;
 
 import android.util.Log;
 
 import com.example.weather.MainApp;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserCity.ParserCity;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserCity.iParserCity;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserFile.NewParserJson;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB.parserFile.iNewParserJson;
-import com.example.weather.app.activities.main.model.newPaerser.onFirstStart.iOnFirstStart;
+import com.example.weather.app.activities.main.model.onFirstStart.doCreateDB.parserCity.ParserCity;
+import com.example.weather.app.activities.main.model.onFirstStart.doCreateDB.parserCity.iParserCity;
+import com.example.weather.app.activities.main.model.onFirstStart.doCreateDB.parserFile.NewParserJson;
+import com.example.weather.app.activities.main.model.onFirstStart.doCreateDB.parserFile.iNewParserJson;
+import com.example.weather.app.activities.main.model.onFirstStart.iOnFirstStart;
 import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
 import com.example.weather.data.DB.parser.ParserWeather;
@@ -27,7 +27,6 @@ public class DoCreateDB implements iDoCreateDB {
 
     private iNewParserJson parserJson;
     private iParserCity parserCity;
-
     private iOnFirstStart firstStart;
 
     @Inject CityDAO cityDAO;

@@ -1,4 +1,4 @@
-package com.example.weather.app.activities.main.model.newPaerser.onFirstStart.doCreateDB;
+package com.example.weather.app.activities.main.model.onFirstStart.doCreateDB;
 
 import io.reactivex.disposables.Disposable;
 

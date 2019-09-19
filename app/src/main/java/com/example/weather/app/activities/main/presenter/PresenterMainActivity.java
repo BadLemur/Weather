@@ -1,9 +1,13 @@
-package com.example.weather.app.activities.main.presenter.controlViewPager;
+package com.example.weather.app.activities.main.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
+import com.example.weather.app.activities.main.model.addOldChoiceCity.AddOldChoiceCity;
+import com.example.weather.app.activities.main.model.addOldChoiceCity.iAddOldChoiceCity;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
 import com.example.weather.app.activities.main.model.doViewModel.iDoViewModel;
+import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStart;
+import com.example.weather.app.activities.main.model.onFirstStart.iOnFirstStart;
 import com.example.weather.app.activities.main.view.ViewMainActivity;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.eventBus.ClickItemRecyclerView;
@@ -15,13 +19,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 @InjectViewState
-public class PresenterMainActivityControlViewPager extends MvpPresenter<ViewMainActivity> implements iPresenterMainActivityControlViewPager {
+public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implements iPresenterMainActivity {
 
+    private iOnFirstStart firstStart;
     private iDoViewModel modelView;
+    private iAddOldChoiceCity addOldChoiceCity;
 
-    public PresenterMainActivityControlViewPager() {
+    private List<Long> listCity = new ArrayList<>();
+
+    public PresenterMainActivity() {
         EventBus.getDefault().register(this);
+        firstStart = new OnFirstStart(this);
         modelView = new DoViewModel(this);
+        addOldChoiceCity = new AddOldChoiceCity();
+    }
+
+    @Override
+    protected void onFirstViewAttach() {
+        super.onFirstViewAttach();
+        firstStart.onFirstStart();
     }
 
     @Override
@@ -53,11 +69,15 @@ public class PresenterMainActivityControlViewPager extends MvpPresenter<ViewMain
         getViewState().showPositionViewPager(listCity.size() - 1);
     }
 
-    private List<Long> listCity = new ArrayList<>();
-
     @Override
     public List<Long> getListCity() {
         return listCity;
+    }
+
+    @Override
+    public void onCreatedDB() {
+        getViewState().doLoader();
+        getViewState().showViewPager();
     }
 
     @Override
