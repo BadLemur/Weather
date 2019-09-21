@@ -6,8 +6,8 @@ import com.example.weather.app.activities.main.model.addOldChoiceCity.AddOldChoi
 import com.example.weather.app.activities.main.model.addOldChoiceCity.iAddOldChoiceCity;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
 import com.example.weather.app.activities.main.model.doViewModel.iDoViewModel;
-import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStart;
-import com.example.weather.app.activities.main.model.onFirstStart.iOnFirstStart;
+import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStartModel;
+import com.example.weather.app.activities.main.model.onFirstStart.iOnFirstStartModel;
 import com.example.weather.app.activities.main.view.ViewMainActivity;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.eventBus.ClickItemRecyclerView;
@@ -21,37 +21,36 @@ import java.util.List;
 @InjectViewState
 public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implements iPresenterMainActivity {
 
-    private iOnFirstStart firstStart;
+    private iOnFirstStartModel startModel;
     private iDoViewModel modelView;
-    private iAddOldChoiceCity addOldChoiceCity;
 
     private List<Long> listCity = new ArrayList<>();
 
     public PresenterMainActivity() {
         EventBus.getDefault().register(this);
-        firstStart = new OnFirstStart(this);
+        startModel = new OnFirstStartModel(this);
         modelView = new DoViewModel(this);
-        addOldChoiceCity = new AddOldChoiceCity();
+        new AddOldChoiceCity();
     }
 
     @Override
     protected void onFirstViewAttach() {
         super.onFirstViewAttach();
-        firstStart.onFirstStart();
+        startModel.onFirstStart();
     }
 
     @Override
-    public void showCityUser() {
+    public void onCreatedDB() {
+        getViewState().doLoader();
         modelView.doViewCity();
     }
 
     @Override
     public void setCityUser(List<CityUser> list) {
-        if (list.size() > 0) {
+        if (list.size() > 0)// {
             for (CityUser cityUser : list)
                 listCity.add(cityUser.idWeather);
-            getViewState().updateViewPager();
-        } else getViewState().loadFindCity();
+        getViewState().updateViewPager();
     }
 
     /*если id есть, просто переключает на него,
@@ -74,11 +73,6 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
         return listCity;
     }
 
-    @Override
-    public void onCreatedDB() {
-        getViewState().doLoader();
-        getViewState().showViewPager();
-    }
 
     @Override
     public void onDestroy() {

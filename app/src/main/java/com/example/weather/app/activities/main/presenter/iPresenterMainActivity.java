@@ -8,8 +8,6 @@ public interface iPresenterMainActivity {
 
     void onCreatedDB();
 
-    void showCityUser();
-
     List<Long> getListCity();
 
     void setCityUser(List<CityUser> list);

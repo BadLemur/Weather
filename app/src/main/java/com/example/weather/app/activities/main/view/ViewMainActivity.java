@@ -15,8 +15,8 @@ public interface ViewMainActivity extends MvpView {
     @StateStrategyType(AddToEndSingleStrategy.class)
     void doLoader();
 
-    @StateStrategyType(OneExecutionStateStrategy.class)
-    void showViewPager();
+//    @StateStrategyType(OneExecutionStateStrategy.class)
+//    void showViewPager();
 
     /*    PresenterMainActivity*/
     @StateStrategyType(OneExecutionStateStrategy.class)

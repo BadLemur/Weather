@@ -51,18 +51,6 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
         tabLayout.setupWithViewPager(viewPager);
     }
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_toolbar, menu);
-        return true;
-    }
-
-    @OnClick(R.id.ib_show_city)
-    public void showFindCityAct() {
-        Intent intent = new Intent(getApplicationContext(), FindCity.class);
-        startActivity(intent);
-    }
-
     @Override
     public void doLoader() {
         layoutProgressBar.setVisibility(View.GONE);
@@ -70,11 +58,7 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     }
 
     @Override
-    public void showViewPager() {
-        controlViewPager.showCityUser();
-    }
-
-    @Override
+    @OnClick(R.id.ib_show_city)
     public void loadFindCity() {
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
         startActivity(intent);

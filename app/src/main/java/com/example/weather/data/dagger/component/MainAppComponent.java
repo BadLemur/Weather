@@ -4,7 +4,7 @@ import com.example.weather.app.activities.findCity.model.ModelFindCity;
 import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
 import com.example.weather.app.activities.main.model.addOldChoiceCity.AddOldChoiceCity;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
-import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStart;
+import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStartModel;
 import com.example.weather.app.fragments.weatherCity.model.ModelWeatherCity;
 import com.example.weather.app.fragments.weatherCity.model.ReturnTypeWeather;
 import com.example.weather.data.DB.parser.ParserJson;
@@ -32,5 +32,5 @@ public interface MainAppComponent {
 
     void inject(ReturnTypeWeather app);
 
-    void inject(OnFirstStart app);
+    void inject(OnFirstStartModel app);
 }

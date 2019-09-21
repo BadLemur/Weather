@@ -21,22 +21,19 @@ import java.util.List;
 import javax.inject.Inject;
 
 import io.reactivex.Single;
-import io.reactivex.SingleSource;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 
-public class OnFirstStart implements iOnFirstStart {
-    private static final String TAG = "OnFirstStart";
+public class OnFirstStartModel implements iOnFirstStartModel {
+    private static final String TAG = "OnFirstStartModel";
 
     @Inject CityDAO cityDAO;
     @Inject Context context;
 
     private iPresenterMainActivity presenter;
 
-    public OnFirstStart(iPresenterMainActivity presenter) {
+    public OnFirstStartModel(iPresenterMainActivity presenter) {
         MainApp.app().appComponent().inject(this);
         this.presenter = presenter;
     }
@@ -116,9 +113,4 @@ public class OnFirstStart implements iOnFirstStart {
         return single;
     }
 
-//    @Override
-//    public void onComplete() {
-//        presenter.onCreatedDB();
-//        disposable.dispose();
-//    }
 }

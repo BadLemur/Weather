@@ -21,7 +21,8 @@ public class TabsFragmentPageAdapter extends FragmentStatePagerAdapter {
     }
 
     public void setListCity(List<Long> idCityList) {
-        this.idCityList = idCityList;
+        if (this.idCityList == null)
+            this.idCityList = idCityList;
         this.notifyDataSetChanged();
     }
 
