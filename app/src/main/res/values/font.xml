@@ -10,5 +10,9 @@
     <string name="weather_thunder" translatable="false">&#xf01e;</string>
     <string name="weather_drizzle" translatable="false">&#xf01c;</string>
 
+    <string name="wind" translatable="false">&#xede9;</string>
+    <string name="pressure" translatable="false">&#xf079;</string>
+    <string name="humidity" translatable="false">&#xf07A;</string>
+
     <string name="place_not_found" translatable="false">Sorry, no weather data found.</string>
 </resources>

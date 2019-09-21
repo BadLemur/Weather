@@ -7,4 +7,8 @@ import lombok.Setter;
 @Setter
 public class PostMain {
     private float temp;
+    /*давление*/
+    private int pressure;
+    /*влажность*/
+    private int humidity;
 }

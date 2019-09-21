@@ -55,6 +55,12 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     public void doLoader() {
         layoutProgressBar.setVisibility(View.GONE);
         appBarLayout.setVisibility(View.VISIBLE);
+        adapter.setListCity(controlViewPager.getListCity());
+    }
+
+    @Override
+    public void updateViewPager() {
+        adapter.updateListCity();
     }
 
     @Override
@@ -62,11 +68,6 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     public void loadFindCity() {
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
         startActivity(intent);
-    }
-
-    @Override
-    public void updateViewPager() {
-        adapter.setListCity(controlViewPager.getListCity());
     }
 
     @Override

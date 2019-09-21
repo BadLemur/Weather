@@ -24,4 +24,7 @@ public class GetPostDataWeather {
 
     @SerializedName("sys")
     private PostSys sys;
+
+    @SerializedName("wind")
+    private PostWind wind;
 }
