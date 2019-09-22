@@ -5,6 +5,7 @@ import android.content.Context;
 import android.graphics.Point;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Display;
 import android.view.GestureDetector;
 import android.view.LayoutInflater;
@@ -92,19 +93,6 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
         });
         return root;
     }
-
-
-//    @BindView(R.id.tv_wind_text) TextView windText;
-//    @BindView(R.id.tv_wind_icon) TextView windIcon;
-//    @BindView(R.id.tv_wind_values) TextView windValues;
-//
-//    @BindView(R.id.tv_humidity_text) TextView humidityText;
-//    @BindView(R.id.tv_humidity_icon) TextView humidityIcon;
-//    @BindView(R.id.tv_humidity_values) TextView humidityValues;
-//
-//    @BindView(R.id.tv_pressure_text) TextView pressureText;
-//    @BindView(R.id.tv_pressure_icon) TextView pressureIcon;
-//    @BindView(R.id.tv_pressure_values) TextView pressureValues;
 
     @Override
     public void setData(WrapperData wrapperData) {
