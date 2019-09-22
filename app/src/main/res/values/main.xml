@@ -9,4 +9,8 @@
     <string name="popular_cities">Popular cities</string>
     <string name="please_wait">Please wait, loading data</string>
     <string name="define_your_city">Define your city</string>
+
+    <string name="wind">Wind</string>
+    <string name="humidity">Humidity</string>
+    <string name="pressure">Pressure</string>
 </resources>

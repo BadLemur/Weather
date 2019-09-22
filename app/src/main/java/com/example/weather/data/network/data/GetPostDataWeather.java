@@ -11,9 +11,6 @@ import lombok.Setter;
 @Setter
 public class GetPostDataWeather {
 
-    @SerializedName("coord")
-    private PostCoord coord;
-
     @SerializedName("main")
     private PostMain main;
 
