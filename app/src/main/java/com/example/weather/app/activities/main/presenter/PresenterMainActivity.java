@@ -47,9 +47,12 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
 
     @Override
     public void setCityUser(List<CityUser> list) {
-        if (list.size() > 0)// {
+        if (list.size() > 0)
             for (CityUser cityUser : list)
                 listCity.add(cityUser.idWeather);
+        else
+            getViewState().loadFindCity();
+
         getViewState().updateViewPager();
     }
 

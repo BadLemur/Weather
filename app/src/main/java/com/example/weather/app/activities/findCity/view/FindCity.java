@@ -2,6 +2,7 @@ package com.example.weather.app.activities.findCity.view;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -31,6 +32,7 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     @BindView(R.id.recycler_list_city) RecyclerView recyclerViewCity;
 
     @BindView(R.id.sw_city) SearchView searchView;
+    @BindView(R.id.tv_popular_cities) TextView tvPopularCities;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +46,7 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+//                presenter.setTextSearch(query);
                 return false;
             }
 
@@ -61,6 +64,7 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     public void updateRecyclerView(List<ItemAdapterFindCity> cityList) {
         if (recyclerViewCity.getVisibility() == View.GONE) {
             flexboxContainer.setVisibility(View.GONE);
+            tvPopularCities.setVisibility(View.GONE);
             recyclerViewCity.setVisibility(View.VISIBLE);
             adapterFindCity = new AdapterFindCity(cityList);
             recyclerViewCity.setAdapter(adapterFindCity);
@@ -68,10 +72,10 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
         adapterFindCity.notifyDataSetChanged();
     }
 
-    @OnClick(R.id.btn_search_city)
-    public void SearchCity() {
-//        presenter.
-    }
+//    @OnClick(R.id.btn_search_city)
+//    public void SearchCity() {
+////        presenter.
+//    }
 
     @Override
     protected void onDestroy() {

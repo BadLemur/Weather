@@ -29,7 +29,6 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
             layout = itemView.findViewById(R.id.find_city_layout);
             nameEnCity = itemView.findViewById(R.id.tv_name_en_city_adapter);
             country = itemView.findViewById(R.id.tv_country_adapter);
-
         }
     }
 
