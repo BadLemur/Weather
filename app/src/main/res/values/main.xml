@@ -13,4 +13,6 @@
     <string name="wind">Wind</string>
     <string name="humidity">Humidity</string>
     <string name="pressure">Pressure</string>
+    <string name="meters_per_second">m/s</string>
+
 </resources>

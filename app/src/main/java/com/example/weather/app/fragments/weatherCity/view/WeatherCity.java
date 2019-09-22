@@ -105,7 +105,7 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
         weather.setText(wrapperData.getTypeWeather());
         imageWeather.setText(wrapperData.getTypeWeatherIcon());
 
-        windValues.setText(wrapperData.getSpeedWind());
+        windValues.setText(wrapperData.getSpeedWind() + " " + getResources().getString(R.string.meters_per_second));
         humidityValues.setText(wrapperData.getHumidity());
         pressureValues.setText(wrapperData.getPressure());
     }
