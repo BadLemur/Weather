@@ -19,6 +19,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.widget.NestedScrollView;
 
 import com.arellomobile.mvp.MvpAppCompatFragment;
 import com.arellomobile.mvp.presenter.InjectPresenter;
@@ -38,6 +39,7 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
     PresenterWeatherCity presenter;
     @BindView(R.id.progressBar) ProgressBar progressBar;
     @BindView(R.id.tv_connection_to_server) TextView connectionServer;
+    @BindView(R.id.scroll_view) NestedScrollView scrollView;
     @BindView(R.id.tv_name_city) TextView nameCity;
     @BindView(R.id.tv_temp) TextView temp;
     @BindView(R.id.tv_weather) TextView weather;
@@ -91,6 +93,8 @@ public class WeatherCity extends MvpAppCompatFragment implements ViewWeatherCity
             gestureDetector.onTouchEvent(event);
             return true;
         });
+
+        scrollView.setOnTouchListener((v, event) -> gestureDetector.onTouchEvent(event));
         return root;
     }
 

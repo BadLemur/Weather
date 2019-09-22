@@ -11,13 +11,16 @@
     android:orientation="vertical">
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
+        android:clickable="false"
+        android:filterTouchesWhenObscured="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/container_weather_city"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
             <ProgressBar
                 android:id="@+id/progressBar"
