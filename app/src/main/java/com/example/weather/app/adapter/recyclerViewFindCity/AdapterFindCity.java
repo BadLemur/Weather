@@ -1,4 +1,4 @@
-package com.example.weather.app.adapter.recyclerView;
+package com.example.weather.app.adapter.recyclerViewFindCity;
 
 import android.app.Activity;
 import android.view.LayoutInflater;

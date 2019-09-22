@@ -6,7 +6,7 @@ import com.example.weather.MainApp;
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
 import com.example.weather.app.activities.findCity.model.iModelFindCity;
 import com.example.weather.app.activities.findCity.view.ViewFindCity;
-import com.example.weather.app.adapter.recyclerView.ItemAdapterFindCity;
+import com.example.weather.app.adapter.recyclerViewFindCity.ItemAdapterFindCity;
 
 import java.util.List;
 

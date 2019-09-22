@@ -10,7 +10,10 @@ import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
 public interface ViewMainActivity extends MvpView {
 
     @StateStrategyType(AddToEndSingleStrategy.class)
-    void loadFindCity();
+    void showFindCity();
+
+    @StateStrategyType(AddToEndSingleStrategy.class)
+    void showListCity();
 
     @StateStrategyType(AddToEndSingleStrategy.class)
     void doLoader();

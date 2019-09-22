@@ -15,4 +15,7 @@
     <string name="pressure">Pressure</string>
     <string name="meters_per_second">m/s</string>
 
+
+    <string name="list_of_cities">List of cities</string>
+
 </resources>

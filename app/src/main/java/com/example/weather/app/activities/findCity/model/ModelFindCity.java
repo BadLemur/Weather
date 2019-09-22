@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.findCity.presenter.iPresenterFindCity;
-import com.example.weather.app.adapter.recyclerView.ItemAdapterFindCity;
+import com.example.weather.app.adapter.recyclerViewFindCity.ItemAdapterFindCity;
 import com.example.weather.data.DB.city.City;
 import com.example.weather.data.DB.city.CityDAO;
 

@@ -1,4 +1,4 @@
-package com.example.weather.app.adapter.recyclerView;
+package com.example.weather.app.adapter.recyclerViewFindCity;
 
 import lombok.Builder;
 import lombok.Getter;

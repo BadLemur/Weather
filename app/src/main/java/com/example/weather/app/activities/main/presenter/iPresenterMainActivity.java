@@ -11,4 +11,6 @@ public interface iPresenterMainActivity {
     List<Long> getListCity();
 
     void setCityUser(List<CityUser> list);
+
+    void showCity();
 }

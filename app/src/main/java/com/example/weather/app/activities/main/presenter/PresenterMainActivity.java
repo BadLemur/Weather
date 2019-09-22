@@ -3,7 +3,6 @@ package com.example.weather.app.activities.main.presenter;
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
 import com.example.weather.app.activities.main.model.addOldChoiceCity.AddOldChoiceCity;
-import com.example.weather.app.activities.main.model.addOldChoiceCity.iAddOldChoiceCity;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
 import com.example.weather.app.activities.main.model.doViewModel.iDoViewModel;
 import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStartModel;
@@ -51,7 +50,7 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
             for (CityUser cityUser : list)
                 listCity.add(cityUser.idWeather);
         else
-            getViewState().loadFindCity();
+            getViewState().showFindCity();
 
         getViewState().updateViewPager();
     }
@@ -76,6 +75,12 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
         return listCity;
     }
 
+    @Override
+    public void showCity() {
+        if (listCity.size() > 1)
+            getViewState().showListCity();
+        else getViewState().showListCity();
+    }
 
     @Override
     public void onDestroy() {

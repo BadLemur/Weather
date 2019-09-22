@@ -12,15 +12,14 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.weather.R;
 import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
-import com.example.weather.app.adapter.recyclerView.AdapterFindCity;
-import com.example.weather.app.adapter.recyclerView.ItemAdapterFindCity;
+import com.example.weather.app.adapter.recyclerViewFindCity.AdapterFindCity;
+import com.example.weather.app.adapter.recyclerViewFindCity.ItemAdapterFindCity;
 import com.google.android.flexbox.FlexboxLayout;
 
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
 

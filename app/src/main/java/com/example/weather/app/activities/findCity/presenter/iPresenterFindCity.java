@@ -1,6 +1,6 @@
 package com.example.weather.app.activities.findCity.presenter;
 
-import com.example.weather.app.adapter.recyclerView.ItemAdapterFindCity;
+import com.example.weather.app.adapter.recyclerViewFindCity.ItemAdapterFindCity;
 
 import java.util.List;
 

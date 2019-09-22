@@ -3,8 +3,6 @@ package com.example.weather.app.activities.main.view;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -16,6 +14,7 @@ import com.arellomobile.mvp.MvpAppCompatActivity;
 import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.weather.R;
 import com.example.weather.app.activities.findCity.view.FindCity;
+import com.example.weather.app.activities.listCity.view.ListCity;
 import com.example.weather.app.activities.main.presenter.PresenterMainActivity;
 import com.example.weather.app.adapter.TabsFragmentPageAdapter;
 import com.google.android.material.appbar.AppBarLayout;
@@ -27,7 +26,7 @@ import butterknife.OnClick;
 
 public class MainActivity extends MvpAppCompatActivity implements ViewMainActivity {
 
-    @InjectPresenter PresenterMainActivity controlViewPager;
+    @InjectPresenter PresenterMainActivity presenter;
 
     @BindView(R.id.toolbar) Toolbar toolbar;
     @BindView(R.id.ib_show_city) ImageButton ibShowCity;
@@ -49,13 +48,15 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
         adapter = new TabsFragmentPageAdapter(getSupportFragmentManager());
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
+        ibShowCity.setOnClickListener(v -> presenter.showCity());
     }
 
     @Override
     public void doLoader() {
         layoutProgressBar.setVisibility(View.GONE);
         appBarLayout.setVisibility(View.VISIBLE);
-        adapter.setListCity(controlViewPager.getListCity());
+        adapter.setListCity(presenter.getListCity());
     }
 
     @Override
@@ -64,9 +65,14 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
     }
 
     @Override
-    @OnClick(R.id.ib_show_city)
-    public void loadFindCity() {
+    public void showFindCity() {
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void showListCity() {
+        Intent intent = new Intent(getApplicationContext(), ListCity.class);
         startActivity(intent);
     }
 
