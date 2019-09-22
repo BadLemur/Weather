@@ -8,17 +8,25 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="ToolBar" parent="AppTheme">
-    </style>
+    <style name="ToolBar" parent="AppTheme"></style>
 
     <style name="PopupMenu" parent="AppTheme">
         <item name="android:textColorPrimary">#000</item>
     </style>
 
-    <style name="Divider">
-        <item name="android:layout_margin">8dp</item>
-        <item name="android:layout_width">match_parent</item>
+    <style name="Divider_horizontal">
+<!--        <item name="android:layout_margin">8dp</item>-->
+        <item name="android:layout_width">0dp</item>
         <item name="android:layout_height">1dp</item>
         <item name="android:background">?android:attr/listDivider</item>
+<!--        <item name="android:background">@color/cardview_dark_background</item>-->
+    </style>
+
+    <style name="Divider_vertical">
+<!--        <item name="android:layout_margin">8dp</item>-->
+        <item name="android:layout_width">1dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:background">?android:attr/listDivider</item>
+<!--        <item name="android:background">@color/cardview_dark_background</item>-->
     </style>
 </resources>
