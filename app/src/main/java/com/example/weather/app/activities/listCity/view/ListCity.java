@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.arellomobile.mvp.MvpAppCompatActivity;
@@ -21,7 +22,7 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
 
     @InjectPresenter PresenterListCity presenter;
 
-    @BindView(R.id.container_RecyclerView) RecyclerView containerRecyclerView;
+    @BindView(R.id.container_RecyclerView) RecyclerView recyclerView;
     @BindView(R.id.FloatingActionButton) FloatingActionButton floatingActionButton;
 
     @Override
@@ -29,12 +30,9 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.list_city);
         ButterKnife.bind(this);
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnife.bind(this).unbind();
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerView.setLayoutManager(layoutManager);
+        recyclerView.setHasFixedSize(false);
     }
 
     @OnClick(R.id.FloatingActionButton)
@@ -42,5 +40,11 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        ButterKnife.bind(this).unbind();
     }
 }

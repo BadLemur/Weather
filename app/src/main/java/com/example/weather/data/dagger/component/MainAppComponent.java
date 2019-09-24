@@ -2,6 +2,7 @@ package com.example.weather.data.dagger.component;
 
 import com.example.weather.app.activities.findCity.model.ModelFindCity;
 import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
+import com.example.weather.app.activities.listCity.model.ModelListCity;
 import com.example.weather.app.activities.main.model.addOldChoiceCity.AddOldChoiceCity;
 import com.example.weather.app.activities.main.model.doViewModel.DoViewModel;
 import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStartModel;
@@ -33,4 +34,6 @@ public interface MainAppComponent {
     void inject(ReturnTypeWeather app);
 
     void inject(OnFirstStartModel app);
+
+    void inject(ModelListCity app);
 }

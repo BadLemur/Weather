@@ -45,7 +45,6 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-//                presenter.setTextSearch(query);
                 return false;
             }
 

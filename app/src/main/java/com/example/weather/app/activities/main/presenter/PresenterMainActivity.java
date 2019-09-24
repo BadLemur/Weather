@@ -79,7 +79,7 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
     public void showCity() {
         if (listCity.size() > 1)
             getViewState().showListCity();
-        else getViewState().showListCity();
+        else getViewState().showFindCity();
     }
 
     @Override
