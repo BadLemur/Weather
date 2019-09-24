@@ -12,6 +12,8 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.example.weather.R;
 import com.example.weather.app.activities.findCity.view.FindCity;
 import com.example.weather.app.activities.listCity.presenter.PresenterListCity;
+import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCity;
+import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCityItem;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import butterknife.BindView;
@@ -33,6 +35,9 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(false);
+
+        AdapterListCity adapterListCity = new AdapterListCity();
+        recyclerView.setAdapter(adapterListCity);
     }
 
     @OnClick(R.id.FloatingActionButton)

@@ -11,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weather.R;
 
+import java.util.List;
+
 public class AdapterListCity extends RecyclerView.Adapter<AdapterListCity.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -24,6 +26,8 @@ public class AdapterListCity extends RecyclerView.Adapter<AdapterListCity.ViewHo
             nameEnCity = itemView.findViewById(R.id.tv_name_en_city_adapter);
         }
     }
+
+    private List<AdapterListCityItem> list;
 
     @NonNull
     @Override
@@ -40,6 +44,8 @@ public class AdapterListCity extends RecyclerView.Adapter<AdapterListCity.ViewHo
 
     @Override
     public int getItemCount() {
+        if (list != null)
+            return list.size();
         return 0;
     }
 }

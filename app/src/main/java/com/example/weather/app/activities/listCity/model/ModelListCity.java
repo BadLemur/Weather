@@ -2,6 +2,7 @@ package com.example.weather.app.activities.listCity.model;
 
 import android.annotation.SuppressLint;
 
+import com.example.weather.MainApp;
 import com.example.weather.app.activities.listCity.presenter.iPresenterListCity;
 import com.example.weather.data.DB.cityUser.CityUserDAO;
 
@@ -17,6 +18,7 @@ public class ModelListCity implements iModelListCity {
 
     public ModelListCity(iPresenterListCity presenter) {
         this.presenter = presenter;
+        MainApp.app().appComponent().inject(this);
     }
 
     @SuppressLint("CheckResult")
