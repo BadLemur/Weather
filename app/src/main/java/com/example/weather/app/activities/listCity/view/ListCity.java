@@ -14,7 +14,10 @@ import com.example.weather.app.activities.findCity.view.FindCity;
 import com.example.weather.app.activities.listCity.presenter.PresenterListCity;
 import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCity;
 import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCityItem;
+import com.example.weather.data.DB.cityUser.CityUser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -26,6 +29,7 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
 
     @BindView(R.id.container_RecyclerView) RecyclerView recyclerView;
     @BindView(R.id.FloatingActionButton) FloatingActionButton floatingActionButton;
+    private AdapterListCity adapterListCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +40,7 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setHasFixedSize(false);
 
-        AdapterListCity adapterListCity = new AdapterListCity();
+        adapterListCity = new AdapterListCity();
         recyclerView.setAdapter(adapterListCity);
     }
 
@@ -45,6 +49,12 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
         Intent intent = new Intent(getApplicationContext(), FindCity.class);
         startActivity(intent);
         this.finish();
+    }
+
+    @Override
+    public void setListAdapter(List<AdapterListCityItem> list) {
+        adapterListCity.setList(list);
+        adapterListCity.notifyDataSetChanged();
     }
 
     @Override

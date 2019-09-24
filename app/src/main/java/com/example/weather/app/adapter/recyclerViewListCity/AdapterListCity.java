@@ -13,6 +13,8 @@ import com.example.weather.R;
 
 import java.util.List;
 
+import lombok.Setter;
+
 public class AdapterListCity extends RecyclerView.Adapter<AdapterListCity.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -27,6 +29,7 @@ public class AdapterListCity extends RecyclerView.Adapter<AdapterListCity.ViewHo
         }
     }
 
+    @Setter
     private List<AdapterListCityItem> list;
 
     @NonNull
