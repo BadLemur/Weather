@@ -23,8 +23,7 @@ import butterknife.ButterKnife;
 
 public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
 
-    @InjectPresenter
-    PresenterFindCity presenter;
+    @InjectPresenter PresenterFindCity presenter;
 
     @BindView(R.id.flex_box_container) FlexboxLayout flexboxContainer;
 

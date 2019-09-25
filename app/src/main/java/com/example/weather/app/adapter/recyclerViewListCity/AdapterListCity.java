@@ -10,6 +10,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weather.R;
+import com.example.weather.eventBus.RemoveItemCityUser;
+
+import org.greenrobot.eventbus.EventBus;
 
 import java.util.List;
 
@@ -20,12 +23,12 @@ public class AdapterListCity extends RecyclerView.Adapter<AdapterListCity.ViewHo
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
         private ImageButton btnClose;
-        private TextView nameEnCity;
+        private TextView nameCity;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             btnClose = itemView.findViewById(R.id.btn_close);
-            nameEnCity = itemView.findViewById(R.id.tv_name_en_city_adapter);
+            nameCity = itemView.findViewById(R.id.tv_nameCity);
         }
     }
 
@@ -42,7 +45,10 @@ public class AdapterListCity extends RecyclerView.Adapter<AdapterListCity.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        holder.nameCity.setText(list.get(position).getNameCity());
+        holder.btnClose.setOnClickListener(v -> {
+            EventBus.getDefault().post(new RemoveItemCityUser(list.get(position).getIdWeather()));
+        });
     }
 
     @Override

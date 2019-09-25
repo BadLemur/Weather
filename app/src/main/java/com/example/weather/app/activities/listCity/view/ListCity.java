@@ -14,7 +14,6 @@ import com.example.weather.app.activities.findCity.view.FindCity;
 import com.example.weather.app.activities.listCity.presenter.PresenterListCity;
 import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCity;
 import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCityItem;
-import com.example.weather.data.DB.cityUser.CityUser;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
@@ -54,6 +53,11 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
     @Override
     public void setListAdapter(List<AdapterListCityItem> list) {
         adapterListCity.setList(list);
+        adapterListCity.notifyDataSetChanged();
+    }
+
+    @Override
+    public void notifyDataSetChangedAdapter() {
         adapterListCity.notifyDataSetChanged();
     }
 

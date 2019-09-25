@@ -7,7 +7,8 @@ public class AdapterListCityItem {
     private long idWeather;
     private String nameCity;
 
-    public AdapterListCityItem(long idWeather) {
+    public AdapterListCityItem(long idWeather, String nameCity) {
         this.idWeather = idWeather;
+        this.nameCity = nameCity;
     }
 }

@@ -15,8 +15,8 @@ public interface CityUserDAO {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     void add(CityUser cityUser);
 
-    @Query("Delete from city_user where id_city =:id_server ")
-    void delete(long id_server);
+    @Query("Delete from city_user where id_city =:idWeather ")
+    void delete(long idWeather);
 
     @Query("Select * from city_user")
     Single<List<CityUser>> getCityUser();

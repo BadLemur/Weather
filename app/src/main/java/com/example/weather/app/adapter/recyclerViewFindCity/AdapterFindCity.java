@@ -53,7 +53,7 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
         if (item.getNameCityEN() != null)
             holder.nameEnCity.setText(item.getNameCityEN().trim());
         holder.layout.setOnClickListener(view -> {
-            EventBus.getDefault().post(new ClickItemRecyclerView(list.get(position).getIdWeather(), item.getCountry().trim()));
+            EventBus.getDefault().post(new ClickItemRecyclerView(list.get(position).getIdWeather(), item.getNameCityEN().trim()));
             ((Activity) holder.itemView.getContext()).finish();
         });
     }
