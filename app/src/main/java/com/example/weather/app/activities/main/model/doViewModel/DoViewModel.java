@@ -37,9 +37,9 @@ public class DoViewModel implements iDoViewModel {
     }
 
     @Override
-    public void addNewCity(long idWearer) {
+    public void addNewCity(long idWearer, String nameCity) {
         Completable.fromAction(() -> {
-            cityUserDAO.add(new CityUser(idWearer));
+            cityUserDAO.add(new CityUser(idWearer, nameCity));
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

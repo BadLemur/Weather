@@ -16,8 +16,11 @@ public class CityUser {
     @ColumnInfo(name = "id_city")
     public long idWeather;
 
+    @ColumnInfo(name = "name_city")
+    public String nameCity;
 
-    public CityUser(long idWeather) {
+    public CityUser(long idWeather, String nameCity) {
         this.idWeather = idWeather;
+        this.nameCity = nameCity;
     }
 }

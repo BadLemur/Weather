@@ -65,7 +65,7 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
                 return;
             }
         }
-        modelView.addNewCity(event.getIdWeather());
+        modelView.addNewCity(event.getIdWeather(), event.getNameCity());
         listCity.add(event.getIdWeather());
         getViewState().showPositionViewPager(listCity.size() - 1);
     }

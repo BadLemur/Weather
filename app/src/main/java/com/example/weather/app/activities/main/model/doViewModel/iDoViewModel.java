@@ -4,5 +4,5 @@ public interface iDoViewModel {
 
     void doViewCity();
 
-    void addNewCity(long idWearer);
+    void addNewCity(long idWearer, String nameCity);
 }
