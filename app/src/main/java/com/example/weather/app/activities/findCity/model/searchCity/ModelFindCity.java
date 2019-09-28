@@ -1,9 +1,10 @@
-package com.example.weather.app.activities.findCity.model;
+package com.example.weather.app.activities.findCity.model.searchCity;
 
 import android.annotation.SuppressLint;
 import android.util.Log;
 
 import com.example.weather.MainApp;
+import com.example.weather.app.activities.findCity.model.searchCity.iModelFindCity;
 import com.example.weather.app.activities.findCity.presenter.iPresenterFindCity;
 import com.example.weather.app.adapter.recyclerViewFindCity.ItemAdapterFindCity;
 import com.example.weather.data.DB.city.City;
@@ -63,7 +64,7 @@ public class ModelFindCity implements iModelFindCity {
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(itemAdapterFindCities ->
-                                presenter.subscribeTextSearch(itemAdapterFindCities),
+                                this.presenter.subscribeTextSearch(itemAdapterFindCities),
                         throwable -> Log.e(TAG, "ModelFindCity: ", throwable),
                         () -> {
                         }, dispos -> disposable = dispos);

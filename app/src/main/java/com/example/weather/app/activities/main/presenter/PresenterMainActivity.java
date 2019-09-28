@@ -8,10 +8,8 @@ import com.example.weather.app.activities.main.model.doViewModel.iDoViewModel;
 import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStartModel;
 import com.example.weather.app.activities.main.model.onFirstStart.iOnFirstStartModel;
 import com.example.weather.app.activities.main.view.ViewMainActivity;
-import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCityItem;
 import com.example.weather.data.DB.cityUser.CityUser;
-import com.example.weather.eventBus.ClickItemRecyclerView;
-import com.example.weather.eventBus.RemoveItemCityUser;
+import com.example.weather.eventBus.ClickItemCity;
 import com.example.weather.eventBus.UpdateCityUser;
 
 import org.greenrobot.eventbus.EventBus;
@@ -61,7 +59,7 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
     /*если id есть, просто переключает на него,
      если нет, добавляет в список и переключает на него*/
     @Subscribe
-    public void eventClickItemRecyclerView(ClickItemRecyclerView event) {
+    public void eventClickItemRecyclerView(ClickItemCity event) {
         for (int i = 0; listCity.size() > i; ++i) {
             if (listCity.get(i) == event.getIdWeather()) {
                 getViewState().showPositionViewPager(i - 1);

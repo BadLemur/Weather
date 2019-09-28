@@ -3,7 +3,7 @@ package com.example.weather.app.activities.main.model.addOldChoiceCity;
 import com.example.weather.MainApp;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCity;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCityDAO;
-import com.example.weather.eventBus.ClickItemRecyclerView;
+import com.example.weather.eventBus.ClickItemCity;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -27,14 +27,14 @@ public class AddOldChoiceCity implements iAddOldChoiceCity {
 
     /*      Ограничиваем колличество записей count     */
     @Subscribe
-    public void addWrite(ClickItemRecyclerView event) {
+    public void addWrite(ClickItemCity event) {
         Completable.fromAction(() -> {
             int count = oldChoiceCityDAO.getCount();
             if (count < this.count)
-                oldChoiceCityDAO.add(new OldChoiceCity(event.getIdWeather()));
+                oldChoiceCityDAO.add(new OldChoiceCity(event.getIdWeather(), event.getNameCity()));
             else {
                 oldChoiceCityDAO.deleteFirstWrite();
-                oldChoiceCityDAO.add(new OldChoiceCity(event.getIdWeather()));
+                oldChoiceCityDAO.add(new OldChoiceCity(event.getIdWeather(), event.getNameCity()));
             }
         })
                 .subscribeOn(Schedulers.io())

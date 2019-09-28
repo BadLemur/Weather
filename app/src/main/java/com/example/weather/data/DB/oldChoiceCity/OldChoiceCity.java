@@ -16,7 +16,11 @@ public class OldChoiceCity {
     @ColumnInfo(name = "id_city")
     public long idWeather;
 
-    public OldChoiceCity(long idWeather) {
+    @ColumnInfo(name = "name_city")
+    public String nameCity;
+
+    public OldChoiceCity(long idWeather, String nameCity) {
         this.idWeather = idWeather;
+        this.nameCity = nameCity;
     }
 }

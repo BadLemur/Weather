@@ -1,4 +1,4 @@
-package com.example.weather.app.activities.findCity.model;
+package com.example.weather.app.activities.findCity.model.searchCity;
 
 public interface iModelFindCity {
 

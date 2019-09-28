@@ -1,6 +1,7 @@
 package com.example.weather.data.dagger.component;
 
-import com.example.weather.app.activities.findCity.model.ModelFindCity;
+import com.example.weather.app.activities.findCity.model.listOldCity.ModelListOldCity;
+import com.example.weather.app.activities.findCity.model.searchCity.ModelFindCity;
 import com.example.weather.app.activities.findCity.presenter.PresenterFindCity;
 import com.example.weather.app.activities.listCity.model.findItem.ModelFindListCity;
 import com.example.weather.app.activities.listCity.model.removeItem.ModelRemoveItem;
@@ -39,4 +40,6 @@ public interface MainAppComponent {
     void inject(ModelFindListCity app);
 
     void inject(ModelRemoveItem app);
+
+    void inject(ModelListOldCity app);
 }

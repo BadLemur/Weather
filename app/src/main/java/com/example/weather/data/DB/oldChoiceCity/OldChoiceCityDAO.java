@@ -25,7 +25,7 @@ public interface OldChoiceCityDAO {
     void deleteFirstWrite();
 
     @Query("Select * from old_choice_city")
-    Single<List<CityUser>> getList();
+    Single<List<OldChoiceCity>> getList();
 
     @Query("Select COUNT(*) FROM old_choice_city")
     Integer getCount();

@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.weather.R;
-import com.example.weather.eventBus.ClickItemRecyclerView;
+import com.example.weather.eventBus.ClickItemCity;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -53,7 +53,7 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
         if (item.getNameCityEN() != null)
             holder.nameEnCity.setText(item.getNameCityEN().trim());
         holder.layout.setOnClickListener(view -> {
-            EventBus.getDefault().post(new ClickItemRecyclerView(list.get(position).getIdWeather(), item.getNameCityEN().trim()));
+            EventBus.getDefault().post(new ClickItemCity(list.get(position).getIdWeather(), item.getNameCityEN().trim()));
             ((Activity) holder.itemView.getContext()).finish();
         });
     }
