@@ -60,6 +60,8 @@ public class AdapterFindCity extends RecyclerView.Adapter<AdapterFindCity.ViewHo
 
     @Override
     public int getItemCount() {
-        return list.size();
+        if (list != null)
+            return list.size();
+        return 0;
     }
 }

@@ -31,7 +31,6 @@ public class ModelFindCity implements iModelFindCity {
 
     private iPresenterFindCity presenter;
     @Getter
-    private List<ItemAdapterFindCity> findCityList = new ArrayList<>();
     private ObservableEmitter<String> observableEmitter;
     private Disposable disposable;
 
@@ -48,7 +47,7 @@ public class ModelFindCity implements iModelFindCity {
                 .distinctUntilChanged()
                 .flatMap(s -> cityDAO.getList(s + "%"))
                 .map(cityList -> {
-                    findCityList.clear();
+                    List<ItemAdapterFindCity> findCityList = new ArrayList<>();
                     for (City city : cityList) {
                         ItemAdapterFindCity item = ItemAdapterFindCity
                                 .builder()

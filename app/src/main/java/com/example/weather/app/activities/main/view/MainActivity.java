@@ -50,6 +50,9 @@ public class MainActivity extends MvpAppCompatActivity implements ViewMainActivi
         tabLayout.setupWithViewPager(viewPager);
 
         ibShowCity.setOnClickListener(v -> presenter.showCity());
+
+        layoutProgressBar.setVisibility(View.VISIBLE);
+        appBarLayout.setVisibility(View.GONE);
     }
 
     @Override

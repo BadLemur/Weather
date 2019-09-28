@@ -77,7 +77,6 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
         listCity.clear();
         getViewState().showPositionViewPager(0);
         modelView.doViewCity();
-//        getViewState().updateViewPager();
     }
 
     @Override

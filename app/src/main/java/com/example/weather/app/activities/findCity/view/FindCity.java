@@ -27,7 +27,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
-    private static final String TAG = "FindCity";
+
     @InjectPresenter PresenterFindCity presenter;
 
     @BindView(R.id.flex_box_container) FlexboxLayout flexboxContainer;
@@ -36,6 +36,8 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
 
     @BindView(R.id.sw_city) SearchView searchView;
     @BindView(R.id.tv_popular_cities) TextView tvPopularCities;
+
+    private AdapterFindCity adapterFindCity;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,17 +62,21 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
         });
     }
 
-    private AdapterFindCity adapterFindCity;
+    @Override
+    public void setList(List<ItemAdapterFindCity> list) {
+        adapterFindCity = new AdapterFindCity(list);
+        recyclerViewCity.setAdapter(adapterFindCity);
+    }
 
     @Override
-    public void updateRecyclerView(List<ItemAdapterFindCity> cityList) {
-        if (recyclerViewCity.getVisibility() == View.GONE) {
-            flexboxContainer.setVisibility(View.GONE);
-            tvPopularCities.setVisibility(View.GONE);
-            recyclerViewCity.setVisibility(View.VISIBLE);
-            adapterFindCity = new AdapterFindCity(cityList);
-            recyclerViewCity.setAdapter(adapterFindCity);
-        }
+    public void setVisible() {
+        flexboxContainer.setVisibility(View.GONE);
+        tvPopularCities.setVisibility(View.GONE);
+        recyclerViewCity.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void updateRecyclerView() {
         adapterFindCity.notifyDataSetChanged();
     }
 
@@ -90,7 +96,7 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.bind(this).unbind();
-        presenter.disposable();
+//        presenter.disposable();
     }
 }
 //    @OnClick(R.id.btn_search_city)

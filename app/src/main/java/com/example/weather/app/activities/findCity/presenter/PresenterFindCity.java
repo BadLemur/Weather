@@ -9,15 +9,18 @@ import com.example.weather.app.activities.findCity.model.searchCity.ModelFindCit
 import com.example.weather.app.activities.findCity.model.searchCity.iModelFindCity;
 import com.example.weather.app.activities.findCity.view.ViewFindCity;
 import com.example.weather.app.adapter.recyclerViewFindCity.ItemAdapterFindCity;
-import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @InjectViewState
 public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPresenterFindCity {
     private iModelFindCity modelFindCity;
     private iModelListOldCity modelListOldCity;
+
+    private List<ItemAdapterFindCity> itemAdapterFindCities = new ArrayList<>();
+    private Boolean isVisible = false;
 
     public PresenterFindCity() {
         MainApp.app().appComponent().inject(this);
@@ -29,6 +32,7 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
     public void attachView(ViewFindCity view) {
         super.attachView(view);
         modelListOldCity.searchOldCity();
+        getViewState().setList(itemAdapterFindCities);
     }
 
     @Override
@@ -42,12 +46,21 @@ public class PresenterFindCity extends MvpPresenter<ViewFindCity> implements iPr
         modelFindCity.setTextSearch(str);
     }
 
+
     @Override
     public void subscribeTextSearch(List<ItemAdapterFindCity> itemAdapterFindCities) {
-        getViewState().updateRecyclerView(itemAdapterFindCities);
+        this.itemAdapterFindCities.clear();
+        this.itemAdapterFindCities.addAll(itemAdapterFindCities);
+        if (!isVisible) {
+            getViewState().setVisible();
+            isVisible = true;
+        }
+        getViewState().updateRecyclerView();
     }
 
-    public void disposable() {
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
         modelFindCity.disposable();
     }
 
