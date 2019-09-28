@@ -96,7 +96,6 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     protected void onDestroy() {
         super.onDestroy();
         ButterKnife.bind(this).unbind();
-//        presenter.disposable();
     }
 }
 //    @OnClick(R.id.btn_search_city)

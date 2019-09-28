@@ -5,14 +5,15 @@ import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy;
 import com.arellomobile.mvp.viewstate.strategy.OneExecutionStateStrategy;
 import com.arellomobile.mvp.viewstate.strategy.SkipStrategy;
 import com.arellomobile.mvp.viewstate.strategy.StateStrategyType;
+import com.example.weather.customStrategy.CustomStrategy;
 
 @StateStrategyType(AddToEndSingleStrategy.class)
 public interface ViewMainActivity extends MvpView {
 
-    @StateStrategyType(AddToEndSingleStrategy.class)
+    @StateStrategyType(value = CustomStrategy.class, tag = "test")
     void showFindCity();
 
-    @StateStrategyType(AddToEndSingleStrategy.class)
+    @StateStrategyType(value = CustomStrategy.class, tag = "test")
     void showListCity();
 
     @StateStrategyType(AddToEndSingleStrategy.class)
@@ -21,6 +22,6 @@ public interface ViewMainActivity extends MvpView {
     @StateStrategyType(OneExecutionStateStrategy.class)
     void showPositionViewPager(int position);
 
-    @StateStrategyType(AddToEndSingleStrategy.class)
+    @StateStrategyType(value = CustomStrategy.class, tag = "test")
     void updateViewPager();
 }
