@@ -10,6 +10,7 @@ import com.example.weather.app.activities.listCity.view.ViewListCity;
 import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCityItem;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.eventBus.RemoveItemCityUser;
+import com.example.weather.eventBus.UpdateCityUser;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -56,6 +57,7 @@ public class PresenterListCity extends MvpPresenter<ViewListCity> implements iPr
     @Override
     public void notifyDataSetChangedAdapter() {
         getViewState().notifyDataSetChangedAdapter();
+        EventBus.getDefault().post(new UpdateCityUser());
     }
 
     @Override

@@ -1,10 +1,13 @@
 package com.example.weather.app.adapter;
 
 import android.os.Bundle;
+import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 
 import com.example.weather.MainApp;
 import com.example.weather.app.fragments.weatherCity.view.WeatherCity;
@@ -44,5 +47,10 @@ public class TabsFragmentPageAdapter extends FragmentStatePagerAdapter {
         if (idCityList == null)
             return 0;
         return idCityList.size();
+    }
+
+    @Override
+    public int getItemPosition(@NonNull Object object) {
+        return PagerAdapter.POSITION_NONE;
     }
 }

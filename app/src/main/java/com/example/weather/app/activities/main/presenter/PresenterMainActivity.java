@@ -8,8 +8,11 @@ import com.example.weather.app.activities.main.model.doViewModel.iDoViewModel;
 import com.example.weather.app.activities.main.model.onFirstStart.OnFirstStartModel;
 import com.example.weather.app.activities.main.model.onFirstStart.iOnFirstStartModel;
 import com.example.weather.app.activities.main.view.ViewMainActivity;
+import com.example.weather.app.adapter.recyclerViewListCity.AdapterListCityItem;
 import com.example.weather.data.DB.cityUser.CityUser;
 import com.example.weather.eventBus.ClickItemRecyclerView;
+import com.example.weather.eventBus.RemoveItemCityUser;
+import com.example.weather.eventBus.UpdateCityUser;
 
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
@@ -68,6 +71,15 @@ public class PresenterMainActivity extends MvpPresenter<ViewMainActivity> implem
         modelView.addNewCity(event.getIdWeather(), event.getNameCity());
         listCity.add(event.getIdWeather());
         getViewState().showPositionViewPager(listCity.size() - 1);
+    }
+
+
+    @Subscribe
+    public void updateCityUser(UpdateCityUser event) {
+        listCity.clear();
+        getViewState().showPositionViewPager(0);
+        modelView.doViewCity();
+//        getViewState().updateViewPager();
     }
 
     @Override
