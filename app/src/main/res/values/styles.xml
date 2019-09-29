@@ -6,12 +6,9 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="ToolBar" parent="AppTheme"></style>
-
-    <style name="PopupMenu" parent="AppTheme">
-        <item name="android:textColorPrimary">#000</item>
+        <item name="android:textColor">#000</item>
+<!--        <item name="android:typeface">monospace</item>-->
+        <item name="android:textSize">18sp</item>
     </style>
 
     <style name="Divider_horizontal">
