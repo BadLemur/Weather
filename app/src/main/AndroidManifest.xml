@@ -9,7 +9,7 @@
     <!--удалить largeHeap hardwareAccelerated - так нужны только для парсенга-->
     <application
         android:name=".MainApp"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:hardwareAccelerated="false"
         android:icon="@mipmap/ic_launcher"
         android:label="Weather"

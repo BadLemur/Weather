@@ -1,6 +1,7 @@
 package com.example.weather.app.activities.listCity.model.removeItem;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.listCity.presenter.iPresenterListCity;
@@ -13,7 +14,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class ModelRemoveItem implements iModelRemoveItem {
-
+    private static final String TAG = "ModelRemoveItem";
     @Inject CityUserDAO cityUserDAO;
     private iPresenterListCity presenter;
 
@@ -30,6 +31,7 @@ public class ModelRemoveItem implements iModelRemoveItem {
         })
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(() -> presenter.notifyDataSetChangedAdapter());
+                .subscribe(() -> presenter.notifyDataSetChangedAdapter(),
+                        throwable -> Log.e(TAG, "removeItemCityUser: ", throwable));
     }
 }

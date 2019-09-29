@@ -49,7 +49,7 @@ public class OnFirstStartModel implements iOnFirstStartModel {
                         createDB();
                     else
                         presenter.onCreatedDB();
-                });
+                }, throwable -> Log.e(TAG, "onFirstStart: ", throwable));
     }
 
     @SuppressLint("CheckResult")

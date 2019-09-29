@@ -1,5 +1,8 @@
 package com.example.weather.app.activities.main.model.addOldChoiceCity;
 
+import android.annotation.SuppressLint;
+import android.util.Log;
+
 import com.example.weather.MainApp;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCity;
 import com.example.weather.data.DB.oldChoiceCity.OldChoiceCityDAO;
@@ -15,7 +18,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class AddOldChoiceCity implements iAddOldChoiceCity {
-
+    private static final String TAG = "AddOldChoiceCity";
     @Inject OldChoiceCityDAO oldChoiceCityDAO;
 
     public AddOldChoiceCity() {
@@ -26,6 +29,7 @@ public class AddOldChoiceCity implements iAddOldChoiceCity {
     private int count = 10;
 
     /*      Ограничиваем колличество записей count     */
+    @SuppressLint("CheckResult")
     @Subscribe
     public void addWrite(ClickItemCity event) {
         Completable.fromAction(() -> {
@@ -39,6 +43,7 @@ public class AddOldChoiceCity implements iAddOldChoiceCity {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(() -> {
+                }, throwable -> Log.e(TAG, "addWrite: ", throwable));
     }
 }

@@ -1,6 +1,7 @@
 package com.example.weather.app.activities.listCity.model.findItem;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 
 import com.example.weather.MainApp;
 import com.example.weather.app.activities.listCity.presenter.iPresenterListCity;
@@ -12,7 +13,7 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class ModelFindListCity implements iModelFindListCity {
-
+    private static final String TAG = "ModelFindListCity";
     @Inject CityUserDAO cityUserDAO;
     private iPresenterListCity presenter;
 
@@ -27,6 +28,7 @@ public class ModelFindListCity implements iModelFindListCity {
         cityUserDAO.getCityUser()
                 .subscribeOn(Schedulers.computation())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(cityUsers -> presenter.setListCity(cityUsers));
+                .subscribe(cityUsers -> presenter.setListCity(cityUsers),
+                        throwable -> Log.e(TAG, "searchListCity: ", throwable));
     }
 }

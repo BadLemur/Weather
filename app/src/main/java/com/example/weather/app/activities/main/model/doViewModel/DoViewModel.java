@@ -36,6 +36,7 @@ public class DoViewModel implements iDoViewModel {
                         throwable -> Log.e(TAG, "doViewCity: ", throwable));
     }
 
+    @SuppressLint("CheckResult")
     @Override
     public void addNewCity(long idWearer, String nameCity) {
         Completable.fromAction(() -> {
@@ -43,6 +44,7 @@ public class DoViewModel implements iDoViewModel {
         })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe();
+                .subscribe(() -> {
+                }, throwable -> Log.e(TAG, "addNewCity: ", throwable));
     }
 }
