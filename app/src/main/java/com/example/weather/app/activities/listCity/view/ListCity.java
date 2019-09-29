@@ -3,6 +3,7 @@ package com.example.weather.app.activities.listCity.view;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -41,6 +42,7 @@ public class ListCity extends MvpAppCompatActivity implements ViewListCity {
 
         adapterListCity = new AdapterListCity();
         recyclerView.setAdapter(adapterListCity);
+        floatingActionButton.startAnimation(AnimationUtils.loadAnimation(this, R.anim.floating_scale));
     }
 
     @OnClick(R.id.FloatingActionButton)

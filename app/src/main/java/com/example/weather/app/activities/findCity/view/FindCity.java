@@ -1,7 +1,10 @@
 package com.example.weather.app.activities.findCity.view;
 
 import android.os.Bundle;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.view.View;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -42,6 +45,10 @@ public class FindCity extends MvpAppCompatActivity implements ViewFindCity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        this.getWindow().requestFeature(Window.FEATURE_ACTION_BAR);
+//        Transition explode = TransitionInflater.from(this).inflateTransition(R.transition.anim);
+//        this.getWindow().setEnterTransition(explode);
+//        getWindow().setEnterTransition(explode);
         setContentView(R.layout.find_city);
         ButterKnife.bind(this);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
